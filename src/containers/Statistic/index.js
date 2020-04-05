@@ -9,7 +9,7 @@ import Statistic from './Statistic'
 // } from '../../reducers/InputBlock/InputBLockReducer'
 
 const mapStateToProps = state => ({
-  dynamicProgramResult: state.inputBlock.dynamicProgramResult,
+  statisticResults: state.inputBlock.statisticResults,
 })
 
 export default connect(mapStateToProps, null)(Statistic)

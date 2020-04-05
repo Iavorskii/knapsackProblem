@@ -87,7 +87,7 @@ const StyledTable = styled(Table)`
   padding: 0 25px;
   .ant-table-thead > tr > th {
     text-align: center;
-    background-color: #c5cae9;
+    background-color: #9fa8da;
     color: #000;
     font-size: 16px;
     font-family: sans-serif;
@@ -100,7 +100,7 @@ const StyledTable = styled(Table)`
     padding: 12px;
   }
   .ant-table-header.ant-table-hide-scrollbar {
-    background-color: #c5cae9;
+    background-color: #9fa8da;
   }
   .ant-table-row.ant-table-row-level-0 {
     td {

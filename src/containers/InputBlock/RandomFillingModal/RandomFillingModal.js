@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Modal, Row, Col, InputNumber, Form, Button } from 'antd'
+import { Modal, Row, Col, InputNumber, Form, Button, notification } from 'antd'
 
 class RandomFillingModal extends PureComponent {
   state = {
@@ -52,6 +52,10 @@ class RandomFillingModal extends PureComponent {
     const modyfiedNumberOfItems = numberOfItems + thingsCount
     setNumberOfItems({ numberOfItems: modyfiedNumberOfItems })
     toggleRandomFillingModal()
+    notification.success({
+      message: 'Предметы  успешно сгенерированы и добавлены в таблицу',
+      duration: 3,
+    })
   }
 
   renderFooterButtons = () => {

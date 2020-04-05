@@ -33,16 +33,17 @@ export default class DynamicProgrammingAlgorithm extends Component {
     dataSourceState: [],
   }
 
-  newResultArray = []
-
   componentDidMount() {
     const { dataSource, knapsackWeight } = this.props
 
     this.setState({ dataSourceState: this.knapsack(dataSource, knapsackWeight) })
+    console.log('CDM')
+    // setNeedDecide(false)
   }
 
   knapsack = (items, knapsackWeight) => {
-    const { setDecisionResult, dynamicProgramResult } = this.props
+    console.log('KNAP')
+    const { setDecisionResult, statisticResults } = this.props
     let item = 0
     let weight = 0
     let maxBefore = 0
@@ -95,24 +96,21 @@ export default class DynamicProgrammingAlgorithm extends Component {
     const decisionTime = end - start
     // console.log(`SecondWay: ${end - start}ms`)
     // The right-bottom-corner cell of the grid contains the final solution for the whole problem.
-    this.newResultArray = [...dynamicProgramResult]
-    this.newResultArray.push({
+    const newResultArray = [...statisticResults]
+    newResultArray.push({
       methodName: 'Метод динамического программирования',
       decisionTime,
       maxBenefit,
     })
     setDecisionResult({
-      kindProgramResult: 'dynamicProgramResult',
-      resultArray: this.newResultArray,
+      statisticResults: newResultArray,
     })
     return solutionArray
   }
 
   render() {
     const { dataSourceState } = this.state
-    // const { setNeedDecide } = this.props
-    // setNeedDecide(false)
-
+    console.log('renderrrr')
     return (
       <StyledTable
         dataSource={dataSourceState}
@@ -126,7 +124,7 @@ export default class DynamicProgrammingAlgorithm extends Component {
 const StyledTable = styled(Table)`
   .ant-table-thead > tr > th {
     text-align: center;
-    background-color: #c5cae9;
+    background-color: #9fa8da;
     color: #000;
     font-size: 16px;
     font-family: sans-serif;
@@ -139,7 +137,7 @@ const StyledTable = styled(Table)`
     padding: 12px;
   }
   .ant-table-header.ant-table-hide-scrollbar {
-    background-color: #c5cae9;
+    background-color: #9fa8da;
   }
   .ant-table-row.ant-table-row-level-0 {
     td {
@@ -153,5 +151,5 @@ DynamicProgrammingAlgorithm.propTypes = {
   knapsackWeight: PropTypes.number,
   setDecisionResult: PropTypes.func,
   setNeedDecide: PropTypes.func,
-  dynamicProgramResult: PropTypes.arrayOf(),
+  statisticResults: PropTypes.arrayOf(),
 }

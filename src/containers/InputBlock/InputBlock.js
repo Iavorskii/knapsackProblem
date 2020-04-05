@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
+import { notification } from 'antd'
 import InputBlockHeader from './InputBlockHeader'
 import InitialTable from './InitialTable/InitialTable'
 import RandomFillingModal from './RandomFillingModal'
@@ -18,6 +18,10 @@ export default class InputBlock extends Component {
     const modifyiedNumberOfItems = numberOfItems + 1
     setNumberOfItems({ numberOfItems: modifyiedNumberOfItems })
     setCostWeightArray({ dataSource: [...dataSource, newData] })
+    notification.success({
+      message: 'Предмет успешно добавлен',
+      duration: 3,
+    })
   }
 
   handleDelete = key => {
@@ -25,6 +29,10 @@ export default class InputBlock extends Component {
     const modifyiedNumberOfItems = numberOfItems - 1
     setNumberOfItems({ numberOfItems: modifyiedNumberOfItems })
     setCostWeightArray({ dataSource: dataSource.filter(item => item.key !== key) })
+    notification.success({
+      message: 'Предмет успешно удален',
+      duration: 3,
+    })
   }
 
   handleSave = row => {
@@ -44,6 +52,10 @@ export default class InputBlock extends Component {
     const { setCostWeightArray, setNumberOfItems } = this.props
     setCostWeightArray({ dataSource: [] })
     setNumberOfItems({ numberOfItems: 0 })
+    notification.success({
+      message: 'Таблица успешно очищена',
+      duration: 3,
+    })
   }
 
   setWeight = value => {

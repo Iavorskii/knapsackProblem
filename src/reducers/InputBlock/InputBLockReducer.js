@@ -23,8 +23,7 @@ const initialState = {
   isOpenRandomFillingModal: false,
   knapsackWeight: null,
 
-  dynamicProgramResult: [],
-  greedyProgramResult: [],
+  statisticResults: [],
 }
 
 export default handleActions(
@@ -48,9 +47,9 @@ export default handleActions(
       ...state,
       knapsackWeight,
     }),
-    [SET_DECISION_RESULT]: (state, { payload: { kindProgramResult, resultArray } }) => ({
+    [SET_DECISION_RESULT]: (state, { payload: { statisticResults } }) => ({
       ...state,
-      [kindProgramResult]: resultArray,
+      statisticResults,
     }),
     [SET_NUMBER_OF_ITEMS]: (state, { payload: { numberOfItems } }) => ({
       ...state,

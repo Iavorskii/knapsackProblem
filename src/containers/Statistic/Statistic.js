@@ -5,7 +5,7 @@ import { Table } from 'antd'
 import { numSorter, stringSorter } from '../../utils'
 
 const Statistic = props => {
-  const { dynamicProgramResult } = props
+  const { statisticResults } = props
 
   const columns = [
     {
@@ -35,7 +35,7 @@ const Statistic = props => {
     <Wrapper>
       <StyledTable
         columns={columns}
-        dataSource={dynamicProgramResult}
+        dataSource={statisticResults}
         bordered
         pagination={{ pageSize: 6 }}
       />
@@ -63,7 +63,7 @@ const StyledTable = styled(Table)`
 
   .ant-table-thead > tr > th {
     text-align: center;
-    background-color: #c5cae9;
+    background-color: #9fa8da;
     color: #000;
     font-size: 16px;
     font-family: sans-serif;
@@ -75,7 +75,7 @@ const StyledTable = styled(Table)`
     font-family: sans-serif;
   }
   .ant-table-header.ant-table-hide-scrollbar {
-    background-color: #c5cae9;
+    background-color: #9fa8da;
   }
   .ant-table-row.ant-table-row-level-0 {
     td {
@@ -86,5 +86,5 @@ const StyledTable = styled(Table)`
 `
 
 Statistic.propTypes = {
-  dynamicProgramResult: PropTypes.arrayOf(),
+  statisticResults: PropTypes.arrayOf(),
 }

@@ -1,16 +1,16 @@
 import { connect } from 'react-redux'
 
-import { setDecisionResult } from '../../../reducers/InputBlock/InputBLockReducer'
+import { changeStatistic } from '../../../reducers/InputBlock/InputBLockReducer'
 
 import ChooseDecision from './ChooseDecision'
 
 const mapStateToProps = state => ({
-  ...state.inputBlock,
-  // knapsackWeight: state.inputBlock.knapsackWeight,
+  knapsackWeight: state.inputBlock.knapsackWeight,
+  dataSource: state.inputBlock.dataSource,
 })
 
 const mapDispatchToProps = {
-  setDecisionResult,
+  changeStatistic,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChooseDecision)

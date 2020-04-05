@@ -29,21 +29,7 @@ export default class DynamicProgrammingAlgorithm extends Component {
     },
   ]
 
-  state = {
-    dataSourceState: [],
-  }
-
-  componentDidMount() {
-    const { dataSource, knapsackWeight } = this.props
-
-    this.setState({ dataSourceState: this.knapsack(dataSource, knapsackWeight) })
-    console.log('CDM')
-    // setNeedDecide(false)
-  }
-
-  knapsack = (items, knapsackWeight) => {
-    console.log('KNAP')
-    const { setDecisionResult, statisticResults } = this.props
+  dynamicAlgorithm = (items, knapsackWeight) => {
     let item = 0
     let weight = 0
     let maxBefore = 0
@@ -52,7 +38,6 @@ export default class DynamicProgrammingAlgorithm extends Component {
     const matrixWeight = new Array(numberOfItems + 1)
     const matrixToKeep = new Array(numberOfItems + 1)
     const solutionArray = []
-    const start = new Date().getTime()
 
     for (item = 0; item < numberOfItems + 1; item++) {
       matrixWeight[item] = new Array(knapsackWeight + 1)
@@ -90,30 +75,36 @@ export default class DynamicProgrammingAlgorithm extends Component {
     }
 
     const maxBenefit = matrixWeight[numberOfItems][knapsackWeight]
-    // console.log('Max Benefit: ', matrixWeight[numberOfItems][knapsackWeight])
-    // console.log('Max Benefit From: ', solutionArray)
-    const end = new Date().getTime()
-    const decisionTime = end - start
-    // console.log(`SecondWay: ${end - start}ms`)
     // The right-bottom-corner cell of the grid contains the final solution for the whole problem.
-    const newResultArray = [...statisticResults]
-    newResultArray.push({
-      methodName: 'Метод динамического программирования',
+    return { solutionArray, maxBenefit }
+  }
+
+  refreshStatistic = (decisionTime, maxBenefit) => {
+    const { changeStatistic } = this.props
+
+    const methodName = 'Метод динамического программирования'
+    const currentStatistic = {
+      methodName,
       decisionTime,
       maxBenefit,
-    })
-    setDecisionResult({
-      statisticResults: newResultArray,
-    })
-    return solutionArray
+    }
+    changeStatistic({ currentStatistic })
   }
 
   render() {
-    const { dataSourceState } = this.state
-    console.log('renderrrr')
+    const { dataSource, knapsackWeight } = this.props
+
+    const start = new Date().getTime()
+    const result = this.dynamicAlgorithm(dataSource, knapsackWeight)
+    const end = new Date().getTime()
+
+    const decisionTime = end - start
+    const { maxBenefit } = result
+    this.refreshStatistic(decisionTime, maxBenefit)
+
     return (
       <StyledTable
-        dataSource={dataSourceState}
+        dataSource={result.solutionArray}
         columns={this.columns}
         bordered
         pagination={{ pageSize: 7 }}
@@ -149,7 +140,5 @@ const StyledTable = styled(Table)`
 DynamicProgrammingAlgorithm.propTypes = {
   dataSource: PropTypes.array,
   knapsackWeight: PropTypes.number,
-  setDecisionResult: PropTypes.func,
-  setNeedDecide: PropTypes.func,
-  statisticResults: PropTypes.arrayOf(),
+  changeStatistic: PropTypes.func,
 }

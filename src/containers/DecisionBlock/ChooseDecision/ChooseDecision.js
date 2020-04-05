@@ -7,15 +7,9 @@ import { isNil, isNull, isEqual } from 'lodash'
 import DynamicProgram from '../../../components/Algorithms/DynamicProgram'
 // import GreedyAlgorithm from '../../../components/Algorithms/GreedyAlgorithm'
 // import GeneticAlgorithm from '../../../components/Algorithms/GeneticAlgorithm'
+import { decisionMethods } from '../../../constants/index'
 
 const { TabPane } = Tabs
-
-const decisionMethods = {
-  brandAndBound: '1',
-  dynamicProgram: '2',
-  greedyAlgorithm: '3',
-  geneticAlgorithm: '4',
-}
 
 export default class DecisionMethodsTabs extends Component {
   state = {
@@ -23,8 +17,6 @@ export default class DecisionMethodsTabs extends Component {
     isDisabledDecideButton: false,
     isNeedToDecide: false,
     oldDataSource: [],
-
-    isDiplom: true,
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -41,10 +33,6 @@ export default class DecisionMethodsTabs extends Component {
     }
   }
 
-  decideTask = () => {
-    this.setState({ isNeedToDecide: true })
-  }
-
   checkWeightEntered = () => {
     const { knapsackWeight } = this.props
     const isWeightEntered = isNull(knapsackWeight)
@@ -57,7 +45,7 @@ export default class DecisionMethodsTabs extends Component {
       <StyledDecisionButton
         type='primary'
         disabled={isDisabledDecideButton}
-        onClick={() => this.decideTask()}
+        onClick={() => this.setState({ isNeedToDecide: true })}
       >
         Решить задачу
       </StyledDecisionButton>
@@ -73,8 +61,8 @@ export default class DecisionMethodsTabs extends Component {
   }
 
   render() {
-    const { dataSource, knapsackWeight, setDecisionResult, dynamicProgramResult } = this.props
-    const { choosedMethod, isNeedToDecide, isDiplom } = this.state
+    const { dataSource, knapsackWeight, changeStatistic } = this.props
+    const { choosedMethod, isNeedToDecide } = this.state
 
     return (
       <Wrapper>
@@ -85,7 +73,7 @@ export default class DecisionMethodsTabs extends Component {
               onChange={key => this.chooseMethod(key)}
               defaultActiveKey={decisionMethods.dynamicProgram}
             >
-              {/* {isDiplom && (
+              {/*
                   <StyledTabPane tab='Метод ветвей и границ' key={decisionMethods.brandAndBound}>
                     Метод ветвей и границ
                   </StyledTabPane>
@@ -95,7 +83,7 @@ export default class DecisionMethodsTabs extends Component {
                   <StyledTabPane tab='Генетический алгоритм' key={decisionMethods.geneticAlgorithm}>
                     Генетический алгоритм
                   </StyledTabPane>
-                  )} */}
+                 */}
               <StyledTabPane
                 tab='Метод динамического программирования'
                 key={decisionMethods.dynamicProgram}
@@ -107,9 +95,8 @@ export default class DecisionMethodsTabs extends Component {
                     <DynamicProgram
                       dataSource={dataSource}
                       knapsackWeight={knapsackWeight}
-                      setDecisionResult={setDecisionResult}
+                      changeStatistic={changeStatistic}
                       setNeedDecide={this.setNeedDecide}
-                      dynamicProgramResult={dynamicProgramResult}
                     />
                   )}
               </StyledTabPane>
@@ -122,14 +109,11 @@ export default class DecisionMethodsTabs extends Component {
 }
 
 const Wrapper = styled.div`
-  margin-top: 200px;
   grid-row-start: 3;
-  border-radius: 10px;
-  background-color: #fff;
-  height: 600px;
-
-  grid-column-end: 3;
   grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: #fff;
+  border-radius: 10px;
   box-shadow: 2px 2px 3px rgba(0.4, 0, 0, 0.12), 0 1px 2px rgba(0.4, 0.4, 0.4, 01);
 
   .ant-btn-primary {
@@ -161,6 +145,6 @@ const StyledDecisionButton = styled(Button)`
 DecisionMethodsTabs.propTypes = {
   dataSource: PropTypes.array,
   knapsackWeight: PropTypes.number,
-  setDecisionResult: PropTypes.func,
-  dynamicProgramResult: PropTypes.arrayOf(),
+  changeStatistic: PropTypes.func,
+  statisticResults: PropTypes.arrayOf(),
 }

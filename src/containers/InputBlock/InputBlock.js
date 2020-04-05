@@ -97,10 +97,8 @@ InputBlock.propTypes = {
 
 const Wrapper = styled.div`
   grid-row-start: 2;
-  width: 950px;
-  margin-top: 20px;
+  // width: 950px;
   border-radius: 10px;
   background-color: #fff;
-  height: 600px;
   box-shadow: 2px 2px 3px rgba(0.4, 0, 0, 0.12), 0 1px 2px rgba(0.4, 0.4, 0.4, 01);
 `

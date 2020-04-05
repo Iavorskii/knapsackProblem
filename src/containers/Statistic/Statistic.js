@@ -46,8 +46,6 @@ const Statistic = props => {
 export default Statistic
 
 const Wrapper = styled.div`
-  margin-top: 60px;
-  width: 850px;
   .ant-btn-primary {
     height: 32px;
     background-color: #7986cb;
@@ -73,6 +71,7 @@ const StyledTable = styled(Table)`
     color: #000;
     font-size: 16px;
     font-family: sans-serif;
+    padding: 12px;
   }
   .ant-table-header.ant-table-hide-scrollbar {
     background-color: #9fa8da;

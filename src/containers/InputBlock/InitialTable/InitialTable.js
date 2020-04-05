@@ -80,7 +80,6 @@ const InitialTable = props => {
 }
 
 const TableWrapper = styled.div`
-  margin-top: 50px;
   background-color: #fff;
 `
 const StyledTable = styled(Table)`

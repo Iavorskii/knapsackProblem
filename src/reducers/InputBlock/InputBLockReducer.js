@@ -7,13 +7,13 @@ export const SET_NUMBER_OF_ITEMS = 'inputBlock/SET_NUMBER_OF_ITEMS'
 export const TOGGLE_RANDOM_FILLING_MODAL = 'inputBlock/TOGGLE_RANDOM_FILLING_MODAL'
 
 // time
-export const SET_DECISION_RESULT = 'inputBlock/SET_DECISION_RESULT'
+export const CHANGE_STATISTIC = 'inputBlock/CHANGE_STATISTIC'
 
 export const setCostWeightArray = createAction(SET_COST_WEIGHT_ARRAY)
 export const setRandomParams = createAction(SET_RANDOM_PARAMS)
 export const toggleRandomFillingModal = createAction(TOGGLE_RANDOM_FILLING_MODAL)
 export const setKnapsackWeight = createAction(SET_KNAPSACK_WEIGHT)
-export const setDecisionResult = createAction(SET_DECISION_RESULT)
+export const changeStatistic = createAction(CHANGE_STATISTIC)
 export const setNumberOfItems = createAction(SET_NUMBER_OF_ITEMS)
 
 const initialState = {
@@ -47,9 +47,9 @@ export default handleActions(
       ...state,
       knapsackWeight,
     }),
-    [SET_DECISION_RESULT]: (state, { payload: { statisticResults } }) => ({
+    [CHANGE_STATISTIC]: (state, { payload: { currentStatistic } }) => ({
       ...state,
-      statisticResults,
+      statisticResults: [...state.statisticResults, currentStatistic],
     }),
     [SET_NUMBER_OF_ITEMS]: (state, { payload: { numberOfItems } }) => ({
       ...state,

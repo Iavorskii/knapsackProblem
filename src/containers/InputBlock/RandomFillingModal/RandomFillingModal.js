@@ -1,51 +1,41 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Modal, Row, Col, InputNumber, Form, Button } from 'antd'
-import { isNil } from 'lodash'
 
-class RandomFillingModal extends Component {
+class RandomFillingModal extends PureComponent {
   state = {
-    thingsCount: '',
-    minWeight: '',
-    maxWeight: null,
-    minCost: null,
-    maxCost: null,
     temporaryCostWeightArray: [],
   }
 
   componentDidMount() {
     const {
-      form: { validateFields },
+      form: { validateFields, setFieldsValue },
     } = this.props
     validateFields({ force: true })
+    setFieldsValue({
+      thingsCount: 1000,
+      minWeight: 1,
+      maxWeight: 10000,
+      minCost: 1,
+      maxCost: 10000,
+    })
   }
 
-  handleChange = (value, fieldName) => {
-    if (!isNil(value)) {
-      this.setState({ [fieldName]: value })
-    }
-  }
+  hasErrors = fieldsError => Object.keys(fieldsError).some(field => fieldsError[field])
 
-  hasErrors = fieldsError => {
-    return Object.keys(fieldsError).some(field => fieldsError[field])
-  }
-
-  randomInteger = (min, max) => {
-    // случайное число от min до (max)
-    return Math.floor(Math.random() * (max - min)) + min
-  }
+  randomInteger = (min, max) => Math.floor(Math.random() * (max - min)) + min
 
   handleOk = () => {
-    const { toggleRandomFillingModal, setCostWeightArray, dataSource } = this.props
     const {
-      thingsCount,
-      minWeight,
-      maxWeight,
-      minCost,
-      maxCost,
-      temporaryCostWeightArray,
-    } = this.state
+      toggleRandomFillingModal,
+      setCostWeightArray,
+      dataSource,
+      form: { getFieldsValue },
+    } = this.props
+    const { thingsCount, minWeight, maxWeight, minCost, maxCost } = getFieldsValue()
+
+    const { temporaryCostWeightArray } = this.state
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < thingsCount; i++) {
       const tempObject = {
@@ -85,10 +75,8 @@ class RandomFillingModal extends Component {
       isOpenRandomFillingModal,
       toggleRandomFillingModal,
       form: { getFieldDecorator },
-      knapsackWeight,
+      // knapsackWeight,
     } = this.props
-    const { thingsCount, minWeight, maxWeight, minCost, maxCost } = this.state
-    console.log('maxWeight', maxWeight)
 
     return (
       <Modal
@@ -112,9 +100,8 @@ class RandomFillingModal extends Component {
                   ],
                 })(
                   <StyledInput
-                    value={thingsCount}
                     parser={value => value.replace(/[^+\d]/g, '')}
-                    onChange={value => this.handleChange(value, 'thingsCount')}
+                    // onChange={value => this.handleChange(value, 'thingsCount')}
                     allowClear
                   />
                 )}
@@ -133,13 +120,7 @@ class RandomFillingModal extends Component {
                     },
                   ],
                 })(
-                  <StyledInput
-                    value={minWeight}
-                    min={1}
-                    parser={value => value.replace(/[^+\d]/g, '')}
-                    onChange={value => this.handleChange(value, 'minWeight')}
-                    allowClear
-                  />
+                  <StyledInput min={1} parser={value => value.replace(/[^+\d]/g, '')} allowClear />
                 )}
               </Form.Item>
             </Col>
@@ -155,18 +136,11 @@ class RandomFillingModal extends Component {
                       message: `Поле обязательно для заполнения`,
                     },
                     // {
-                    //   max: knapsackWeight,
+                    //   max: 10000,
                     //   message: `Макс. вес не должен превышать вес рюкзака!`,
                     // },
                   ],
-                })(
-                  <StyledInput
-                    value={maxWeight}
-                    parser={value => value.replace(/[^+\d]/g, '')}
-                    onChange={value => this.handleChange(value, 'maxWeight')}
-                    allowClear
-                  />
-                )}
+                })(<StyledInput parser={value => value.replace(/[^+\d]/g, '')} allowClear />)}
               </Form.Item>
             </Col>
           </StyledRow>
@@ -181,14 +155,7 @@ class RandomFillingModal extends Component {
                       message: `Поле обязательно для заполнения`,
                     },
                   ],
-                })(
-                  <StyledInput
-                    parser={value => value.replace(/[^+\d]/g, '')}
-                    value={minCost}
-                    onChange={value => this.handleChange(value, 'minCost')}
-                    allowClear
-                  />
-                )}
+                })(<StyledInput parser={value => value.replace(/[^+\d]/g, '')} allowClear />)}
               </Form.Item>
             </Col>
           </StyledRow>
@@ -203,14 +170,7 @@ class RandomFillingModal extends Component {
                       message: `Поле обязательно для заполнения`,
                     },
                   ],
-                })(
-                  <StyledInput
-                    parser={value => value.replace(/[^+\d]/g, '')}
-                    value={maxCost}
-                    onChange={value => this.handleChange(value, 'maxCost')}
-                    allowClear
-                  />
-                )}
+                })(<StyledInput parser={value => value.replace(/[^+\d]/g, '')} allowClear />)}
               </Form.Item>
             </Col>
           </StyledRow>

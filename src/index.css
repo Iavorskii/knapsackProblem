@@ -1,0 +1,30 @@
+@font-face {
+  font-family: '';
+  src: local('RobotoCondensed-Regular'), url(./fonts/RobotoCondensed-Regular.ttf) format('woff');
+}
+
+@font-face {
+  font-family: 'Raleway-Regular';
+  src: local('Raleway-Regular'), url(./fonts/Raleway-Regular.ttf) format('woff');
+}
+
+@font-face {
+  font-family: 'Raleway-Bold';
+  src: local('Raleway-Bold'), url(./fonts/Raleway-Bold.ttf) format('woff');
+}
+
+
+
+body {
+  margin: 0;
+  font-family: 'Raleway-Regular';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-image: url('./background_cat.jpg'); */
+  background-color: #c5cae9;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

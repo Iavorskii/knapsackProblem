@@ -75,8 +75,7 @@ export default class DecisionMethodsTabs extends Component {
   render() {
     const { dataSource, knapsackWeight, setDecisionResult, dynamicProgramResult } = this.props
     const { choosedMethod, isNeedToDecide, isDiplom } = this.state
-    console.log('isNeedToDecide', isNeedToDecide)
-    // console.log('choosedMethod', choosedMethod)
+
     return (
       <Wrapper>
         <Row type='flex' justify='space-around'>

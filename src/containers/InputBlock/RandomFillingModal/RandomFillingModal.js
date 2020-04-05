@@ -14,7 +14,7 @@ class RandomFillingModal extends PureComponent {
     } = this.props
     validateFields({ force: true })
     setFieldsValue({
-      thingsCount: 1000,
+      thingsCount: 10,
       minWeight: 1,
       maxWeight: 10000,
       minCost: 1,
@@ -32,6 +32,8 @@ class RandomFillingModal extends PureComponent {
       setCostWeightArray,
       dataSource,
       form: { getFieldsValue },
+      setNumberOfItems,
+      numberOfItems,
     } = this.props
     const { thingsCount, minWeight, maxWeight, minCost, maxCost } = getFieldsValue()
 
@@ -39,6 +41,7 @@ class RandomFillingModal extends PureComponent {
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < thingsCount; i++) {
       const tempObject = {
+        key: numberOfItems + i,
         Name: `Предмет ${i.toString()}`,
         Cost: this.randomInteger(+minCost, +maxCost),
         Weight: this.randomInteger(+minWeight, +maxWeight),
@@ -46,7 +49,8 @@ class RandomFillingModal extends PureComponent {
       temporaryCostWeightArray.push(tempObject)
     }
     setCostWeightArray({ dataSource: [...dataSource, ...temporaryCostWeightArray] })
-
+    const modyfiedNumberOfItems = numberOfItems + thingsCount
+    setNumberOfItems({ numberOfItems: modyfiedNumberOfItems })
     toggleRandomFillingModal()
   }
 
@@ -59,13 +63,9 @@ class RandomFillingModal extends PureComponent {
 
     return [
       <div>
-        <StyledButtonPrimary
-          type='primary'
-          disabled={disabledButtonPrimary}
-          onClick={this.handleOk}
-        >
+        <Button type='primary' disabled={disabledButtonPrimary} onClick={this.handleOk}>
           Сохранить
-        </StyledButtonPrimary>
+        </Button>
       </div>,
     ]
   }
@@ -79,7 +79,7 @@ class RandomFillingModal extends PureComponent {
     } = this.props
 
     return (
-      <Modal
+      <StyledModal
         width={800}
         visible={isOpenRandomFillingModal}
         title='Рандомное добавление предметов'
@@ -175,7 +175,7 @@ class RandomFillingModal extends PureComponent {
             </Col>
           </StyledRow>
         </Form>
-      </Modal>
+      </StyledModal>
     )
   }
 }
@@ -186,19 +186,21 @@ RandomFillingModal.propTypes = {
   isOpenRandomFillingModal: PropTypes.bool,
   toggleRandomFillingModal: PropTypes.func,
   setCostWeightArray: PropTypes.func,
+  setNumberOfItems: PropTypes.func,
   dataSource: PropTypes.arrayOf(),
   form: PropTypes.object,
   knapsackWeight: PropTypes.number,
+  numberOfItems: PropTypes.number,
 }
 
-const StyledRow = styled(Row)``
-const StyledInput = styled(InputNumber)`
-  width: 100%;
-`
-const StyledButtonPrimary = styled(Button)`
+const StyledModal = styled(Modal)`
   .ant-btn-primary {
     height: 32px;
     background-color: #7986cb;
     border-color: #7986cb;
   }
+`
+const StyledRow = styled(Row)``
+const StyledInput = styled(InputNumber)`
+  width: 100%;
 `

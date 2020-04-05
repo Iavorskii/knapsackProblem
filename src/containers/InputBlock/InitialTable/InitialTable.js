@@ -3,6 +3,7 @@ import { Table, Popconfirm } from 'antd'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { EditableFormRow, EditableCell } from './EditableCell'
+import { numSorter, stringSorter } from '../../../utils'
 
 const InitialTable = props => {
   const { handleSave, dataSource, handleDelete } = props
@@ -14,6 +15,7 @@ const InitialTable = props => {
       key: 'Name',
       width: '30%',
       editable: true,
+      sorter: (cur, next) => stringSorter(cur.Name, next.Name),
     },
     {
       title: 'Вес',
@@ -21,6 +23,7 @@ const InitialTable = props => {
       key: 'Weight',
       width: '30%',
       editable: true,
+      sorter: (cur, next) => numSorter(cur.Weight, next.Weight),
     },
     {
       title: 'Стоимость',
@@ -28,6 +31,7 @@ const InitialTable = props => {
       key: 'Cost',
       width: '30%',
       editable: true,
+      sorter: (cur, next) => numSorter(cur.Cost, next.Cost),
     },
     {
       title: '',

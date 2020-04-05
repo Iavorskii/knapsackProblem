@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Table } from 'antd'
-import { numSorter } from '../../utils'
+import { numSorter, stringSorter } from '../../utils'
 
 const Statistic = props => {
   const { dynamicProgramResult } = props
@@ -13,28 +13,23 @@ const Statistic = props => {
       dataIndex: 'methodName',
       key: 'methodName',
       width: '50%',
+      sorter: (cur, next) => stringSorter(cur.methodName, next.methodName),
     },
     {
       title: 'Время решения (мс)',
       dataIndex: 'decisionTime',
       key: 'decisionTime',
       width: '25%',
-      sorter: (cur, next) => {
-        numSorter(cur, next)
-      },
+      sorter: (cur, next) => numSorter(cur.decisionTime, next.decisionTime),
     },
     {
       title: 'Макс. стоимость',
       dataIndex: 'maxBenefit',
       key: 'maxBenefit',
       width: '25%',
-      sorter: (cur, next) => {
-        numSorter(cur, next)
-      },
+      sorter: (cur, next) => numSorter(cur.maxBenefit, next.maxBenefit),
     },
   ]
-
-  console.log('dynamicProgramResult', dynamicProgramResult)
 
   return (
     <Wrapper>
@@ -52,7 +47,7 @@ export default Statistic
 
 const Wrapper = styled.div`
   margin-top: 60px;
-  width: 900px;
+  width: 850px;
   .ant-btn-primary {
     height: 32px;
     background-color: #7986cb;

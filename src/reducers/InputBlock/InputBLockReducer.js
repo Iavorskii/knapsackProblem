@@ -3,6 +3,7 @@ import { handleActions, createAction } from 'redux-actions'
 export const SET_COST_WEIGHT_ARRAY = 'inputBlock/SET_COST_WEIGHT_ARRAY'
 export const SET_KNAPSACK_WEIGHT = 'inputBlock/SET_KNAPSACK_WEIGHT'
 export const SET_RANDOM_PARAMS = 'inputBlock/SET_RANDOM_PARAMS'
+export const SET_NUMBER_OF_ITEMS = 'inputBlock/SET_NUMBER_OF_ITEMS'
 export const TOGGLE_RANDOM_FILLING_MODAL = 'inputBlock/TOGGLE_RANDOM_FILLING_MODAL'
 
 // time
@@ -13,11 +14,12 @@ export const setRandomParams = createAction(SET_RANDOM_PARAMS)
 export const toggleRandomFillingModal = createAction(TOGGLE_RANDOM_FILLING_MODAL)
 export const setKnapsackWeight = createAction(SET_KNAPSACK_WEIGHT)
 export const setDecisionResult = createAction(SET_DECISION_RESULT)
+export const setNumberOfItems = createAction(SET_NUMBER_OF_ITEMS)
 
 const initialState = {
   dataSource: [],
   randomParams: [],
-  countThings: 0,
+  numberOfItems: 0,
   isOpenRandomFillingModal: false,
   knapsackWeight: null,
 
@@ -31,15 +33,13 @@ export default handleActions(
       return {
         ...state,
         dataSource,
-        // countThings,
+        // numberOfItems,
       }
     },
-    [TOGGLE_RANDOM_FILLING_MODAL]: state => {
-      return {
-        ...state,
-        isOpenRandomFillingModal: !state.isOpenRandomFillingModal,
-      }
-    },
+    [TOGGLE_RANDOM_FILLING_MODAL]: state => ({
+      ...state,
+      isOpenRandomFillingModal: !state.isOpenRandomFillingModal,
+    }),
     [SET_RANDOM_PARAMS]: (state, { payload: { randomParams } }) => ({
       ...state,
       randomParams,
@@ -48,12 +48,14 @@ export default handleActions(
       ...state,
       knapsackWeight,
     }),
-    [SET_DECISION_RESULT]: (state, { payload: { kindProgramResult, resultArray } }) => {
-      return {
-        ...state,
-        [kindProgramResult]: resultArray,
-      }
-    },
+    [SET_DECISION_RESULT]: (state, { payload: { kindProgramResult, resultArray } }) => ({
+      ...state,
+      [kindProgramResult]: resultArray,
+    }),
+    [SET_NUMBER_OF_ITEMS]: (state, { payload: { numberOfItems } }) => ({
+      ...state,
+      numberOfItems,
+    }),
   },
   initialState
 )

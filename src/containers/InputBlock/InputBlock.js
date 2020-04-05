@@ -7,27 +7,23 @@ import InitialTable from './InitialTable/InitialTable'
 import RandomFillingModal from './RandomFillingModal'
 
 export default class InputBlock extends Component {
-  state = {
-    count: 0,
-  }
-
   handleAdd = () => {
-    const { count } = this.state
-    const { setCostWeightArray, dataSource } = this.props
+    const { setCostWeightArray, dataSource, numberOfItems, setNumberOfItems } = this.props
     const newData = {
-      key: count,
-      Name: `Предметт ${count}`,
+      key: numberOfItems,
+      Name: `Предмет ${numberOfItems}`,
       Weight: 0,
       Cost: 0,
     }
-    this.setState({
-      count: count + 1,
-    })
+    const modifyiedNumberOfItems = numberOfItems + 1
+    setNumberOfItems({ numberOfItems: modifyiedNumberOfItems })
     setCostWeightArray({ dataSource: [...dataSource, newData] })
   }
 
   handleDelete = key => {
-    const { setCostWeightArray, dataSource } = this.props
+    const { setCostWeightArray, dataSource, setNumberOfItems, numberOfItems } = this.props
+    const modifyiedNumberOfItems = numberOfItems - 1
+    setNumberOfItems({ numberOfItems: modifyiedNumberOfItems })
     setCostWeightArray({ dataSource: dataSource.filter(item => item.key !== key) })
   }
 
@@ -37,7 +33,6 @@ export default class InputBlock extends Component {
     const newData = dataSource
     const index = newData.findIndex(item => row.key === item.key)
     const item = newData[index]
-
     newData.splice(index, 1, {
       ...item,
       ...row,
@@ -46,8 +41,9 @@ export default class InputBlock extends Component {
   }
 
   clearDatasource = () => {
-    const { setCostWeightArray } = this.props
+    const { setCostWeightArray, setNumberOfItems } = this.props
     setCostWeightArray({ dataSource: [] })
+    setNumberOfItems({ numberOfItems: 0 })
   }
 
   setWeight = value => {
@@ -57,7 +53,6 @@ export default class InputBlock extends Component {
 
   render() {
     const { isOpenRandomFillingModal, toggleRandomFillingModal, dataSource } = this.props
-
     return (
       <Wrapper>
         <InputBlockHeader
@@ -83,12 +78,14 @@ InputBlock.propTypes = {
   toggleRandomFillingModal: PropTypes.func,
   setCostWeightArray: PropTypes.func,
   setKnapsackWeight: PropTypes.func,
+  setNumberOfItems: PropTypes.func,
   dataSource: PropTypes.arrayOf(),
+  numberOfItems: PropTypes.number,
 }
 
 const Wrapper = styled.div`
   grid-row-start: 2;
-  width: 900px;
+  width: 950px;
   margin-top: 20px;
   border-radius: 10px;
   background-color: #fff;

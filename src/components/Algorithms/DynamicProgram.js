@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Table } from 'antd'
+import { numSorter, stringSorter } from '../../utils'
 
 export default class DynamicProgrammingAlgorithm extends Component {
   columns = [
@@ -10,18 +11,21 @@ export default class DynamicProgrammingAlgorithm extends Component {
       dataIndex: 'Name',
       key: 'Name',
       width: '30%',
+      sorter: (cur, next) => stringSorter(cur.Name, next.Name),
     },
     {
       title: 'Вес',
       dataIndex: 'Weight',
       key: 'Weight',
       width: '30%',
+      sorter: (cur, next) => numSorter(cur.Weight, next.Weight),
     },
     {
       title: 'Стоимость',
       dataIndex: 'Cost',
       key: 'Cost',
       width: '30%',
+      sorter: (cur, next) => numSorter(cur.Cost, next.Cost),
     },
   ]
 
@@ -107,7 +111,6 @@ export default class DynamicProgrammingAlgorithm extends Component {
   render() {
     const { dataSourceState } = this.state
     // const { setNeedDecide } = this.props
-    console.log('dataSourceState', dataSourceState)
     // setNeedDecide(false)
 
     return (

@@ -5,6 +5,7 @@ import InputBlock from './InputBlock'
 import {
   setCostWeightArray,
   setKnapsackWeight,
+  setNumberOfItems,
   toggleRandomFillingModal,
 } from '../../reducers/InputBlock/InputBLockReducer'
 
@@ -15,6 +16,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   setCostWeightArray,
   setKnapsackWeight,
+  setNumberOfItems,
   toggleRandomFillingModal,
 }
 

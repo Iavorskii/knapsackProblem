@@ -39,7 +39,7 @@ const InputBlockHeader = props => {
 
         <StyledCol span={3}>
           <StyledButton type='primary' onClick={clearDatasource}>
-            Сбросить
+            Очистить таблицу
           </StyledButton>
         </StyledCol>
       </StyledRow>
@@ -59,7 +59,6 @@ const Wrapper = styled.div`
 `
 const StyledRow = styled(Row)`
   margin: 0px 20px 0 25px;
-  // border: 1px solid;
 `
 const StyledButton = styled(Button)`
   margin-bottom: 15px;

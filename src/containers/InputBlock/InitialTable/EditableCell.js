@@ -41,7 +41,6 @@ export class EditableCell extends Component {
         return
       }
       this.toggleEdit()
-      console.log('save')
       handleSave({ ...record, ...values })
     })
   }

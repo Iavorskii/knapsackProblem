@@ -5,7 +5,7 @@ import { InputNumber, Row, Col, Button, Tooltip, Icon } from 'antd'
 
 const InputBlockHeader = props => {
   const { handleAdd, toggleRandomFillingModal, clearDatasource, setWeight } = props
-  const [weightState, setWeightState] = useState(10000)
+  const [weightState, setWeightState] = useState(null)
 
   return (
     <Wrapper>

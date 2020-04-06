@@ -82,7 +82,7 @@ export default class DynamicProgrammingAlgorithm extends Component {
   refreshStatistic = (decisionTime, maxBenefit) => {
     const { changeStatistic } = this.props
 
-    const methodName = 'Метод динамического программирования'
+    const methodName = 'Дин. программирование'
     const currentStatistic = {
       methodName,
       decisionTime,
@@ -117,13 +117,13 @@ const StyledTable = styled(Table)`
     text-align: center;
     background-color: #9fa8da;
     color: #000;
-    font-size: 16px;
+    font-size: 14px;
     font-family: sans-serif;
   }
   .ant-table-tbody > tr > td {
     text-align: center;
     color: #000;
-    font-size: 16px;
+    font-size: 14px;
     font-family: sans-serif;
     padding: 12px;
   }

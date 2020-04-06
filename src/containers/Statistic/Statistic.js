@@ -12,21 +12,21 @@ const Statistic = props => {
       title: 'Название метода',
       dataIndex: 'methodName',
       key: 'methodName',
-      width: '50%',
+      width: '70%',
       sorter: (cur, next) => stringSorter(cur.methodName, next.methodName),
     },
     {
       title: 'Время решения (мс)',
       dataIndex: 'decisionTime',
       key: 'decisionTime',
-      width: '25%',
+      width: '15%',
       sorter: (cur, next) => numSorter(cur.decisionTime, next.decisionTime),
     },
     {
       title: 'Макс. стоимость',
       dataIndex: 'maxBenefit',
       key: 'maxBenefit',
-      width: '25%',
+      width: '15%',
       sorter: (cur, next) => numSorter(cur.maxBenefit, next.maxBenefit),
     },
   ]
@@ -56,20 +56,22 @@ const Wrapper = styled.div`
   }
 `
 const StyledTable = styled(Table)`
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 0 25px;
 
   .ant-table-thead > tr > th {
     text-align: center;
     background-color: #9fa8da;
     color: #000;
-    font-size: 16px;
+    font-size: 14px;
     font-family: sans-serif;
+    white-space: nowrap;
   }
   .ant-table-tbody > tr > td {
     text-align: center;
+    white-space: nowrap;
     color: #000;
-    font-size: 16px;
+    font-size: 14px;
     font-family: sans-serif;
     padding: 12px;
   }

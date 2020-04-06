@@ -41,11 +41,14 @@ const Title = styled.div`
   background-color: #fff;
   height: max-content;
 
-  font-size: 24px;
+  font-size: 21px;
   text-align: center;
   color: #000;
   border-radius: 10px;
   box-shadow: 2px 2px 3px rgba(0.4, 0, 0, 0.12), 0 1px 2px rgba(0.4, 0.4, 0.4, 01);
+  // @media (max-width: 1368px) {
+  //   font-size: 21px;
+  // }
 `
 const StatisticWrapper = styled.div`
   grid-row-start: 2;
@@ -55,7 +58,7 @@ const StatisticWrapper = styled.div`
 `
 const StatisticTitle = styled.div`
   text-align: center;
-  font-size: 24px;
+  font-size: 21px;
   color: black;
   margin-top: 50px;
 `

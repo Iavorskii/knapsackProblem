@@ -10,10 +10,10 @@ const InputBlockHeader = props => {
   return (
     <Wrapper>
       <StyledRow type='flex'>
-        <StyledCol span={6}>
+        <StyledCol span={5}>
           <StyledText>Вместимость рюкзака</StyledText>
         </StyledCol>
-        <StyledCol span={10}>
+        <StyledCol span={8}>
           <StyledInputNumber
             min={1}
             value={weightState}
@@ -21,7 +21,7 @@ const InputBlockHeader = props => {
             parser={value => value.replace(/[^+\d]/g, '')}
           />
         </StyledCol>
-        <StyledCol span={5}>
+        <StyledCol span={8}>
           <StyledButton type='primary' onClick={() => setWeight(weightState)}>
             Применить
           </StyledButton>
@@ -53,18 +53,21 @@ const Wrapper = styled.div`
   }
 `
 const StyledRow = styled(Row)`
-  margin: 0px 20px 0 25px;
+  padding: 0px 25px 0 25px;
 `
 const StyledButton = styled(Button)`
   margin-bottom: 15px;
-  margin-right: 10px;
+  // margin-right: 10px;
 `
 const StyleIcon = styled(Icon)`
   font-size: 24px;
   margin-left: 10px;
+  @media (max-width: 1368px) {
+    margin-left: 5px;
+  }
 `
 const StyledText = styled.div`
-  font-size: 16px;
+  font-size: 14px;
   color: #000;
   padding-top: 5px;
 `
@@ -78,7 +81,10 @@ const StyleIconsCol = styled(Col)`
   padding-top: 5px;
 `
 const StyledInputNumber = styled(InputNumber)`
-  width: 300px;
+  width: 250px;
+  @media (max-width: 1368px) {
+    width: 150px;
+  }
 `
 InputBlockHeader.propTypes = {
   handleAdd: PropTypes.bool,

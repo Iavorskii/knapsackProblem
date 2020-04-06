@@ -21,7 +21,7 @@ const InitialTable = props => {
       title: 'Вес',
       dataIndex: 'Weight',
       key: 'Weight',
-      width: '30%',
+      width: '25%',
       editable: true,
       sorter: (cur, next) => numSorter(cur.Weight, next.Weight),
     },
@@ -29,12 +29,13 @@ const InitialTable = props => {
       title: 'Стоимость',
       dataIndex: 'Cost',
       key: 'Cost',
-      width: '30%',
+      width: '25%',
       editable: true,
       sorter: (cur, next) => numSorter(cur.Cost, next.Cost),
     },
     {
       title: '',
+      width: '15%',
       dataIndex: 'operation',
       render: (text, record) => (
         <Popconfirm title='Уверены в удалении?' onConfirm={() => handleDelete(record.key)}>
@@ -88,13 +89,13 @@ const StyledTable = styled(Table)`
     text-align: center;
     background-color: #9fa8da;
     color: #000;
-    font-size: 16px;
+    font-size: 14px;
     font-family: sans-serif;
   }
   .ant-table-tbody > tr > td {
     text-align: center;
     color: #000;
-    font-size: 16px;
+    font-size: 14px;
     font-family: sans-serif;
     padding: 12px;
   }

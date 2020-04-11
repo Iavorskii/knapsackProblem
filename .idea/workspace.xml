@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00983a7c-b2ad-40ac-bbfa-fe9e8ce9df3e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/knapsack_problem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/knapsack_problem.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Poyasnitelnaya_Zapiska_Pushkarskoi_774_Dari.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Algorithms/BranchAndBoundMethod.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/BranchAndBoundMethod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Algorithms/DynamicProgram.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/DynamicProgram.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Algorithms/DynamicProgram.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/DynamicProgram.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Algorithms/GreedyAlgorithm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/GreedyAlgorithm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/DecisionBlock/ChooseDecision/ChooseDecision.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DecisionBlock/ChooseDecision/ChooseDecision.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/InputBlock/InputBlockHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/InputBlock/InputBlockHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/InputBlock/RandomFillingModal/RandomFillingModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/InputBlock/RandomFillingModal/RandomFillingModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/InputBlock/InputBLockReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/InputBlock/InputBLockReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,20 +32,26 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.linters.configure.manually.selectedeslint" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="D:\Knapsack Problem\knapsack_problem\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="SvnConfiguration">
@@ -57,33 +66,55 @@
       <updated>1585476378862</updated>
       <workItem from="1585476384055" duration="1186000" />
       <workItem from="1586199607477" duration="1533000" />
-      <workItem from="1586201150774" duration="7116000" />
+      <workItem from="1586201150774" duration="11400000" />
+      <workItem from="1586244100246" duration="9564000" />
+      <workItem from="1586516453249" duration="11000" />
+      <workItem from="1586601263333" duration="1274000" />
+      <workItem from="1586603475463" duration="91000" />
+      <workItem from="1586603607065" duration="1677000" />
+      <workItem from="1586605305502" duration="9578000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="824" y="419" key="#ESLint" timestamp="1586605438889">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="824" y="419" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1586605438889" />
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586202258761">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586202258761" />
-    <state x="585" y="114" key="CommitChangelistDialog2" timestamp="1586204926169">
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586603529008">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586204926169" />
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586603529008" />
+    <state x="585" y="2" key="CommitChangelistDialog2" timestamp="1586609632965">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="2" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586609632965" />
     <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1586202486033">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586202486033" />
-    <state x="408" y="178" width="916" height="738" key="SettingsEditor" timestamp="1586202598008">
+    <state x="408" y="178" width="1138" height="738" key="SettingsEditor" timestamp="1586607196424">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="408" y="178" width="916" height="738" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586202598008" />
-    <state x="616" y="242" key="run.anything.popup" timestamp="1585476495715">
+    <state x="408" y="178" width="1138" height="738" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586607196424" />
+    <state x="767" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586605519766">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="242" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585476495715" />
+    <state x="767" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586605519766" />
+    <state x="668" y="98" width="583" height="843" key="find.popup" timestamp="1586610199204">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="668" y="98" width="583" height="843" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586610199204" />
+    <state x="616" y="242" key="run.anything.popup" timestamp="1586245347505">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="242" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586245347505" />
   </component>
 </project>

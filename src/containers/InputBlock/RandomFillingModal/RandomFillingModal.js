@@ -10,16 +10,16 @@ class RandomFillingModal extends PureComponent {
 
   componentDidMount() {
     const {
-      form: { validateFields },
+      form: { validateFields, setFieldsValue },
     } = this.props
     validateFields({ force: true })
-    // setFieldsValue({
-    //   thingsCount: 10,
-    //   minWeight: 1,
-    //   maxWeight: 10000,
-    //   minCost: 1,
-    //   maxCost: 10000,
-    // })
+    setFieldsValue({
+      thingsCount: 5,
+      minWeight: 1,
+      maxWeight: 10,
+      minCost: 1,
+      maxCost: 10,
+    })
   }
 
   hasErrors = fieldsError => Object.keys(fieldsError).some(field => fieldsError[field])

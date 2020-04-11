@@ -21,43 +21,41 @@ const testItems = [
   }
 ]
 
-const expectedBenefit = 5
-let testWeight = 5
-
 const expectedSolutionArray = [
   {
     key: 3,
     Name: "Предмет 3",
     Cost: 3,
     Weight: 3,
-  },
-  {
-    key: 2,
-    Name: "Предмет 2",
-    Cost: 2,
-    Weight: 2,
   }
 ]
 
-// describe - Это метод, который принимает в качестве аргументов название теста и стрелочную функцию
+const expectedBenefit = 5
+const testWeight = 5
 
-// test
-describe('Тестирование метода динамического программирования', () => {
-  const _ = new DynamicProgrammingAlgorithm()
-    // корректные данные
+const _ = new DynamicProgrammingAlgorithm()
+describe('Тест для разных типов данных maxBenefit', () => {
+
   test('Сравнение ожидаемой макс. стоимости и получившейся', () => {
       expect(_.dynamicAlgorithm(testItems, testWeight).maxBenefit).toBe(expectedBenefit)
     })
-    // строка вместо числа
-  test('Передача строки вместо числа', () => {
-    expect(_.dynamicAlgorithm(testItems, testWeight).maxBenefit).toBe('5')
-  })
+})
 
+describe('Тест для массива-решения', () => {
   test('Сравнение ожидаемого массива с решениями и получившимися', () => {
     const solution= _.dynamicAlgorithm(testItems, testWeight).solutionArray
     expect(solution).toEqual(expectedSolutionArray)
   })
 })
 
-
-
+function myExpectFunc(value) {
+  return {
+    toBe: exp => {
+      value === exp
+        ? console.log('SUCCESS')
+        : console.log('ERROR')
+    }
+  }
+}
+// TODO
+myExpectFunc(_.dynamicAlgorithm(testItems, testWeight).maxBenefit).toBe(expectedBenefit)

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Tabs, Row, Col, Button } from 'antd'
+import { Button, Col, Row, Tabs } from 'antd'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { isNil, isNull, isEqual } from 'lodash'
+import { isEqual, isNil } from 'lodash'
 // import BrandAndBoundMethod from '../../../components/Algorithms/BranchAndBoundMethod'
 import DynamicProgram from '../../../components/Algorithms/DynamicProgram'
-// import GreedyAlgorithm from '../../../components/Algorithms/GreedyAlgorithm'
+import GreedyAlgorithm from '../../../components/Algorithms/GreedyAlgorithm'
 // import GeneticAlgorithm from '../../../components/Algorithms/GeneticAlgorithm'
 import { decisionMethods } from '../../../constants/index'
 
@@ -13,7 +13,7 @@ const { TabPane } = Tabs
 
 export default class DecisionMethodsTabs extends Component {
   state = {
-    choosedMethod: decisionMethods.dynamicProgram,
+    choosedMethod: decisionMethods.greedyAlgorithm,
     isDisabledDecideButton: false,
     isNeedToDecide: false,
     oldDataSource: [],
@@ -31,12 +31,6 @@ export default class DecisionMethodsTabs extends Component {
     return {
       isDisabledDecideButton: isNil(knapsackWeight),
     }
-  }
-
-  checkWeightEntered = () => {
-    const { knapsackWeight } = this.props
-    const isWeightEntered = isNull(knapsackWeight)
-    return isWeightEntered
   }
 
   renderDecideButton = () => {
@@ -62,7 +56,14 @@ export default class DecisionMethodsTabs extends Component {
 
   render() {
     const { dataSource, knapsackWeight, changeStatistic } = this.props
-    const { choosedMethod, isNeedToDecide } = this.state
+    const { isNeedToDecide, choosedMethod } = this.state
+    console.log('chhos', choosedMethod)
+    const commonProps = {
+      dataSource,
+      knapsackWeight,
+      changeStatistic,
+      setNeedDecide: this.setNeedDecide,
+    }
 
     return (
       <Wrapper>
@@ -71,33 +72,29 @@ export default class DecisionMethodsTabs extends Component {
             <Tabs
               tabBarExtraContent={this.renderDecideButton()}
               onChange={key => this.chooseMethod(key)}
-              defaultActiveKey={decisionMethods.dynamicProgram}
+              defaultActiveKey={decisionMethods.greedyAlgorithm}
             >
-              {/*
-                  <StyledTabPane tab='Метод ветвей и границ' key={decisionMethods.brandAndBound}>
-                    Метод ветвей и границ
-                  </StyledTabPane>
-                  <StyledTabPane tab='Жадный алгоритм' key={decisionMethods.greedyAlgorithm}>
-                    Жадный алгоритм
-                  </StyledTabPane>
-                  <StyledTabPane tab='Генетический алгоритм' key={decisionMethods.geneticAlgorithm}>
-                    Генетический алгоритм
-                  </StyledTabPane>
-                 */}
+              <StyledTabPane tab='Метод ветвей и границ' key={decisionMethods.brandAndBound}>
+                123
+              </StyledTabPane>
+              <StyledTabPane tab='Жадный алгоритм' key={decisionMethods.greedyAlgorithm}>
+                {dataSource.length !== 0 &&
+                  isNeedToDecide &&
+                  choosedMethod === decisionMethods.greedyAlgorithm && (
+                    <GreedyAlgorithm {...commonProps} />
+                  )}
+              </StyledTabPane>
+              <StyledTabPane tab='Алгоритм перебора(испр)' key={decisionMethods.geneticAlgorithm}>
+                Генетический алгоритм
+              </StyledTabPane>
               <StyledTabPane
                 tab='Метод динамического программирования'
                 key={decisionMethods.dynamicProgram}
               >
-                {!isNil(dataSource) &&
-                  dataSource.length !== 0 &&
-                  choosedMethod === '2' &&
-                  isNeedToDecide && (
-                    <DynamicProgram
-                      dataSource={dataSource}
-                      knapsackWeight={knapsackWeight}
-                      changeStatistic={changeStatistic}
-                      setNeedDecide={this.setNeedDecide}
-                    />
+                {dataSource.length !== 0 &&
+                  isNeedToDecide &&
+                  choosedMethod === decisionMethods.dynamicProgram && (
+                    <DynamicProgram {...commonProps} />
                   )}
               </StyledTabPane>
             </Tabs>
@@ -146,5 +143,4 @@ DecisionMethodsTabs.propTypes = {
   dataSource: PropTypes.array,
   knapsackWeight: PropTypes.number,
   changeStatistic: PropTypes.func,
-  statisticResults: PropTypes.arrayOf(),
 }

@@ -17,7 +17,13 @@ export const changeStatistic = createAction(CHANGE_STATISTIC)
 export const setNumberOfItems = createAction(SET_NUMBER_OF_ITEMS)
 
 const initialState = {
-  dataSource: [],
+  dataSource: [
+    { key: 0, Name: 'Предмет 0', Cost: 7, Weight: 4 },
+    { key: 1, Name: 'Предмет 1', Cost: 5, Weight: 8 },
+    { key: 2, Name: 'Предмет 2', Cost: 5, Weight: 3 },
+    { key: 3, Name: 'Предмет 3', Cost: 7, Weight: 9 },
+    { key: 4, Name: 'Предмет 4', Cost: 7, Weight: 4 },
+  ],
   randomParams: [],
   numberOfItems: 0,
   isOpenRandomFillingModal: false,

@@ -4,14 +4,9 @@
     <list default="true" id="00983a7c-b2ad-40ac-bbfa-fe9e8ce9df3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Algorithms/BranchAndBoundMethod.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/BranchAndBoundMethod.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Algorithms/DynamicProgram.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/DynamicProgram.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Algorithms/DynamicProgram.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/DynamicProgram.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Algorithms/GreedyAlgorithm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/GreedyAlgorithm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/DecisionBlock/ChooseDecision/ChooseDecision.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DecisionBlock/ChooseDecision/ChooseDecision.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/InputBlock/InputBlockHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/InputBlock/InputBlockHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/InputBlock/RandomFillingModal/RandomFillingModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/InputBlock/RandomFillingModal/RandomFillingModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/InputBlock/InputBLockReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/InputBlock/InputBLockReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,10 +75,14 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="824" y="419" key="#ESLint" timestamp="1586605438889">
+    <state x="824" y="419" key="#ESLint" timestamp="1586633914144">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="824" y="419" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1586605438889" />
+    <state x="824" y="419" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1586633914144" />
+    <state x="586" y="198" key="#Inspections" timestamp="1586633918109">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1586633918109" />
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586202258761">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -3,17 +3,17 @@ import { Button, Col, Row, Tabs } from 'antd'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { isEqual, isNil } from 'lodash'
-// import BrandAndBoundMethod from '../../../components/Algorithms/BranchAndBoundMethod'
+import BrandAndBoundMethod from '../../../components/Algorithms/BranchAndBoundMethod'
 import DynamicProgram from '../../../components/Algorithms/DynamicProgram'
 import GreedyAlgorithm from '../../../components/Algorithms/GreedyAlgorithm'
-// import GeneticAlgorithm from '../../../components/Algorithms/GeneticAlgorithm'
+import ExhaustiveSearch from '../../../components/Algorithms/ExhaustiveSearch'
 import { decisionMethods } from '../../../constants/index'
 
 const { TabPane } = Tabs
 
 export default class DecisionMethodsTabs extends Component {
   state = {
-    choosedMethod: decisionMethods.greedyAlgorithm,
+    choosedMethod: null,
     isDisabledDecideButton: false,
     isNeedToDecide: false,
     oldDataSource: [],
@@ -72,10 +72,14 @@ export default class DecisionMethodsTabs extends Component {
             <Tabs
               tabBarExtraContent={this.renderDecideButton()}
               onChange={key => this.chooseMethod(key)}
-              defaultActiveKey={decisionMethods.greedyAlgorithm}
+              defaultActiveKey={decisionMethods.exhaustiveSearch}
             >
               <StyledTabPane tab='Метод ветвей и границ' key={decisionMethods.brandAndBound}>
-                123
+                {dataSource.length !== 0 &&
+                  isNeedToDecide &&
+                  choosedMethod === decisionMethods.greedyAlgorithm && (
+                    <BrandAndBoundMethod {...commonProps} />
+                  )}
               </StyledTabPane>
               <StyledTabPane tab='Жадный алгоритм' key={decisionMethods.greedyAlgorithm}>
                 {dataSource.length !== 0 &&
@@ -84,8 +88,12 @@ export default class DecisionMethodsTabs extends Component {
                     <GreedyAlgorithm {...commonProps} />
                   )}
               </StyledTabPane>
-              <StyledTabPane tab='Алгоритм перебора(испр)' key={decisionMethods.geneticAlgorithm}>
-                Генетический алгоритм
+              <StyledTabPane tab='Алгоритм перебора' key={decisionMethods.exhaustiveSearch}>
+                {dataSource.length !== 0 &&
+                  isNeedToDecide &&
+                  choosedMethod === decisionMethods.exhaustiveSearch && (
+                    <ExhaustiveSearch {...commonProps} />
+                  )}
               </StyledTabPane>
               <StyledTabPane
                 tab='Метод динамического программирования'

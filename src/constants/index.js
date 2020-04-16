@@ -2,7 +2,7 @@ export const decisionMethods = {
   brandAndBound: '1',
   dynamicProgram: '2',
   greedyAlgorithm: '3',
-  geneticAlgorithm: '4',
+  exhaustiveSearch: '4',
 }
 
 export const courseTitle =

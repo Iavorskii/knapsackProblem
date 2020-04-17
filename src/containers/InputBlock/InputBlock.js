@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { notification } from 'antd'
+import { notification, Card } from 'antd'
 import InputBlockHeader from './InputBlockHeader'
 import InitialTable from './InitialTable/InitialTable'
 import RandomFillingModal from './RandomFillingModal'
@@ -66,7 +66,7 @@ export default class InputBlock extends Component {
   render() {
     const { isOpenRandomFillingModal, toggleRandomFillingModal, dataSource } = this.props
     return (
-      <Wrapper>
+      <StyledCard title='Начальные данные'>
         <InputBlockHeader
           handleAdd={this.handleAdd}
           handleSave={this.handleSave}
@@ -80,7 +80,7 @@ export default class InputBlock extends Component {
           handleDelete={this.handleDelete}
         />
         {isOpenRandomFillingModal && <RandomFillingModal />}
-      </Wrapper>
+      </StyledCard>
     )
   }
 }
@@ -95,10 +95,7 @@ InputBlock.propTypes = {
   numberOfItems: PropTypes.number,
 }
 
-const Wrapper = styled.div`
+const StyledCard = styled(Card)`
   grid-row-start: 2;
   // width: 950px;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 2px 2px 3px rgba(0.4, 0, 0, 0.12), 0 1px 2px rgba(0.4, 0.4, 0.4, 01);
 `

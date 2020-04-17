@@ -45,7 +45,7 @@ const CommonResultTable = ({ resultDataSource }) => {
 const StyledTable = styled(Table)`
   .ant-table-thead > tr > th {
     text-align: center;
-    background-color: #9fa8da;
+    background-color: #64b5f6;
     color: #000;
     font-size: 14px;
     font-family: sans-serif;
@@ -58,7 +58,7 @@ const StyledTable = styled(Table)`
     padding: 12px;
   }
   .ant-table-header.ant-table-hide-scrollbar {
-    background-color: #9fa8da;
+    background-color: #64b5f6;
   }
   .ant-table-row.ant-table-row-level-0 {
     td {

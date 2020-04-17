@@ -200,8 +200,8 @@ RandomFillingModal.propTypes = {
 const StyledModal = styled(Modal)`
   .ant-btn-primary {
     height: 32px;
-    background-color: #7986cb;
-    border-color: #7986cb;
+    background-color: #64b5f6;
+    border-color: #64b5f6;
   }
 `
 const StyledRow = styled(Row)``

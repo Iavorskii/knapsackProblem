@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Table } from 'antd'
+import { Table, Card } from 'antd'
 import { numSorter, stringSorter } from '../../utils'
 
 const Statistic = props => {
@@ -33,12 +33,14 @@ const Statistic = props => {
 
   return (
     <Wrapper>
-      <StyledTable
-        columns={columns}
-        dataSource={statisticResults}
-        bordered
-        pagination={{ pageSize: 6 }}
-      />
+      <Card title='Статистическая информация'>
+        <StyledTable
+          columns={columns}
+          dataSource={statisticResults}
+          bordered
+          pagination={{ pageSize: 6 }}
+        />
+      </Card>
     </Wrapper>
   )
 }
@@ -46,10 +48,13 @@ const Statistic = props => {
 export default Statistic
 
 const Wrapper = styled.div`
+  .ant-card-bordered {
+    height: -webkit-fill-available;
+  }
   .ant-btn-primary {
     height: 32px;
-    background-color: #7986cb;
-    border-color: #7986cb;
+    background-color: #64b5f6;
+    border-color: #64b5f6;
   }
   .ant-btn-default {
     height: 32px;
@@ -61,7 +66,7 @@ const StyledTable = styled(Table)`
 
   .ant-table-thead > tr > th {
     text-align: center;
-    background-color: #9fa8da;
+    background-color: #64b5f6;
     color: #000;
     font-size: 14px;
     font-family: sans-serif;
@@ -76,7 +81,7 @@ const StyledTable = styled(Table)`
     padding: 12px;
   }
   .ant-table-header.ant-table-hide-scrollbar {
-    background-color: #9fa8da;
+    background-color: #64b5f6;
   }
   .ant-table-row.ant-table-row-level-0 {
     td {

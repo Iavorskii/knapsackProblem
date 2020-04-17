@@ -11,7 +11,7 @@ const InputBlockHeader = props => {
     <Wrapper>
       <StyledRow type='flex'>
         <StyledCol span={5}>
-          <StyledText>Вместимость рюкзака</StyledText>
+          <StyledText>Вес рюкзака</StyledText>
         </StyledCol>
         <StyledCol span={8}>
           <StyledInputNumber
@@ -45,11 +45,10 @@ const InputBlockHeader = props => {
 export default InputBlockHeader
 
 const Wrapper = styled.div`
-  margin-top: 50px;
   .ant-btn-primary {
     height: 32px;
-    background-color: #7986cb;
-    border-color: #7986cb;
+    background-color: #64b5f6;
+    border-color: #64b5f6;
   }
 `
 const StyledRow = styled(Row)`
@@ -60,7 +59,7 @@ const StyledButton = styled(Button)`
   // margin-right: 10px;
 `
 const StyleIcon = styled(Icon)`
-  font-size: 24px;
+  font-size: 20px;
   margin-left: 10px;
   @media (max-width: 1368px) {
     margin-left: 5px;

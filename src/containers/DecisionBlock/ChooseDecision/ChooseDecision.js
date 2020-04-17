@@ -114,17 +114,17 @@ export default class DecisionMethodsTabs extends Component {
 }
 
 const Wrapper = styled.div`
-  grid-row-start: 3;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  // grid-row-start: 3;
+  // grid-column-start: 1;
+  // grid-column-end: 3;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 2px 2px 3px rgba(0.4, 0, 0, 0.12), 0 1px 2px rgba(0.4, 0.4, 0.4, 01);
 
   .ant-btn-primary {
     height: 32px;
-    background-color: #7986cb;
-    border-color: #7986cb;
+    background-color: #64b5f6;
+    border-color: #64b5f6;
   }
   .ant-btn-default {
     height: 32px;
@@ -133,10 +133,10 @@ const Wrapper = styled.div`
     font-size: 18px;
   }
   .ant-tabs-ink-bar {
-    background-color: #7986cb;
+    background-color: #64b5f6;
   }
   .ant-tabs-nav .ant-tabs-tab-active {
-    color: #7986cb;
+    color: #64b5f6;
   }
 `
 const StyledTabPane = styled(TabPane)`

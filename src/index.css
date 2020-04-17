@@ -13,17 +13,30 @@
   src: local('Raleway-Bold'), url(./fonts/Raleway-Bold.ttf) format('woff');
 }
 
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: local('Roboto-Regular'), url(./fonts/Roboto-Regular.ttf) format('woff');
+}
+
 
 
 body {
   margin: 0;
-  font-family: 'Raleway-Regular';
+  font-family: 'Roboto-Regular';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #c5cae9;
+  background-color: #eeeeee;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.ant-card-head-title {
+  padding: 12px 12px 12px 0;
+}
+
+.ant-card-body {
+  padding: 0;
 }

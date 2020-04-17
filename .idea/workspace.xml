@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00983a7c-b2ad-40ac-bbfa-fe9e8ce9df3e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MainMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Algorithms/BranchAndBoundMethod.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/BranchAndBoundMethod.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/DecisionBlock/ChooseDecision/ChooseDecision.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DecisionBlock/ChooseDecision/ChooseDecision.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/InputBlock/InputBLockReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/InputBlock/InputBLockReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StartPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StartPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

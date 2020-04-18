@@ -1,23 +1,25 @@
 import { connect } from 'react-redux'
 
 import {
-  toggleRandomFillingModal,
+  toggleAddingModal,
   setRandomParams,
   setCostWeightArray,
   setNumberOfItems,
+  setKnapsackWeight,
 } from '../../../reducers/InputBlock/InputBLockReducer'
 
-import RandomFillingModal from './RandomFillingModal'
+import AddingModal from './AddingModal'
 
 const mapStateToProps = state => ({
   ...state.inputBlock,
 })
 
 const mapDispatchToProps = {
-  toggleRandomFillingModal,
+  toggleAddingModal,
   setRandomParams,
   setCostWeightArray,
   setNumberOfItems,
+  setKnapsackWeight,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RandomFillingModal)
+export default connect(mapStateToProps, mapDispatchToProps)(AddingModal)

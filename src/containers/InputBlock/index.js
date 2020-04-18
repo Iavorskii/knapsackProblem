@@ -6,7 +6,7 @@ import {
   setCostWeightArray,
   setKnapsackWeight,
   setNumberOfItems,
-  toggleRandomFillingModal,
+  toggleAddingModal,
 } from '../../reducers/InputBlock/InputBLockReducer'
 
 const mapStateToProps = state => ({
@@ -17,7 +17,7 @@ const mapDispatchToProps = {
   setCostWeightArray,
   setKnapsackWeight,
   setNumberOfItems,
-  toggleRandomFillingModal,
+  toggleAddingModal,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InputBlock)

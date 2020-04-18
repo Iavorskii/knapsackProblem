@@ -5,7 +5,7 @@ import Statistic from './Statistic'
 // import {
 //   setCostWeightArray,
 //   setKnapsackWeight,
-//   toggleRandomFillingModal,
+//   toggleAddingModal,
 // } from '../../reducers/InputBlock/InputBLockReducer'
 
 const mapStateToProps = state => ({

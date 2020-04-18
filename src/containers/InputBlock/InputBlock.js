@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { notification, Card } from 'antd'
 import InputBlockHeader from './InputBlockHeader'
 import InitialTable from './InitialTable/InitialTable'
-import RandomFillingModal from './RandomFillingModal'
+import AddingModal from './AddingModal'
 
 export default class InputBlock extends Component {
   handleAdd = () => {
@@ -64,7 +64,7 @@ export default class InputBlock extends Component {
   }
 
   render() {
-    const { isOpenRandomFillingModal, toggleRandomFillingModal, dataSource } = this.props
+    const { isOpenAddingModal, toggleAddingModal, dataSource } = this.props
     return (
       <StyledCard
         title={
@@ -73,7 +73,7 @@ export default class InputBlock extends Component {
             handleSave={this.handleSave}
             setWeight={this.setWeight}
             clearDatasource={this.clearDatasource}
-            toggleRandomFillingModal={toggleRandomFillingModal}
+            toggleAddingModal={toggleAddingModal}
           />
         }
       >
@@ -82,15 +82,15 @@ export default class InputBlock extends Component {
           handleSave={this.handleSave}
           handleDelete={this.handleDelete}
         />
-        {isOpenRandomFillingModal && <RandomFillingModal />}
+        {isOpenAddingModal && <AddingModal />}
       </StyledCard>
     )
   }
 }
 
 InputBlock.propTypes = {
-  isOpenRandomFillingModal: PropTypes.bool,
-  toggleRandomFillingModal: PropTypes.func,
+  isOpenAddingModal: PropTypes.bool,
+  toggleAddingModal: PropTypes.func,
   setCostWeightArray: PropTypes.func,
   setKnapsackWeight: PropTypes.func,
   setNumberOfItems: PropTypes.func,

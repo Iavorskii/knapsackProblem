@@ -1,73 +1,84 @@
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react'
 import { Card } from 'antd'
 import styled from 'styled-components'
-// import PropTypes from 'prop-types'
-// import { isEqual, isNil } from 'lodash'
-// import BrandAndBoundMethod from '../../../components/Algorithms/BranchAndBoundMethod'
-// import DynamicProgram from '../../../components/Algorithms/DynamicProgram'
-// import GreedyAlgorithm from '../../../components/Algorithms/GreedyAlgorithm'
-// import ExhaustiveSearch from '../../../components/Algorithms/ExhaustiveSearch'
-// import { decisionMethods } from '../../../constants/index'
-import CommonResultTable from '../CommonResultTable'
+import PropTypes from 'prop-types'
+import { isEqual, isNil } from 'lodash'
+import BrandAndBoundMethod from '../../../components/Algorithms/BranchAndBoundMethod'
+import DynamicProgram from '../../../components/Algorithms/DynamicProgram'
+import GreedyAlgorithm from '../../../components/Algorithms/GreedyAlgorithm'
+import ExhaustiveSearch from '../../../components/Algorithms/ExhaustiveSearch'
+import DecisionHeader from './DecisionHeader'
+import { decisionMethods } from '../../../constants/index'
 
 export default class DecisionMethodsTabs extends Component {
-  // state = {
-  //   choosedMethod: null,
-  //   isDisabledDecideButton: false,
-  //   isNeedToDecide: false,
-  //   oldDataSource: [],
-  // }
+  state = {
+    isDisabledDecideButton: false,
+    isNeedToDecide: false,
+    oldDataSource: [],
+  }
 
-  // static getDerivedStateFromProps(props, state) {
-  //   const { knapsackWeight, dataSource } = props
-  //   if (!isEqual(dataSource, state.oldDataSource)) {
-  //     return {
-  //       isDisabledDecideButton: isNil(knapsackWeight),
-  //       isNeedToDecide: false,
-  //       oldDataSource: dataSource,
-  //     }
-  //   }
-  //   return {
-  //     isDisabledDecideButton: isNil(knapsackWeight),
-  //   }
-  // }
+  static getDerivedStateFromProps(props, state) {
+    const { knapsackWeight, dataSource } = props
+    if (!isEqual(dataSource, state.oldDataSource)) {
+      return {
+        isDisabledDecideButton: isNil(knapsackWeight),
+        isNeedToDecide: false,
+        oldDataSource: dataSource,
+      }
+    }
+    return {
+      isDisabledDecideButton: isNil(knapsackWeight),
+    }
+  }
 
-  // renderDecideButton = () => {
-  //   const { isDisabledDecideButton } = this.state
-  //   return (
-  //     <StyledDecisionButton
-  //       type='primary'
-  //       disabled={isDisabledDecideButton}
-  //       onClick={() => this.setState({ isNeedToDecide: true })}
-  //     >
-  //       Решить задачу
-  //     </StyledDecisionButton>
-  //   )
-  // }
+  onClickDecideButton = () => {
+    this.setState({ isNeedToDecide: true })
+  }
 
-  // chooseMethod = key => {
-  //   this.setState({ choosedMethod: key, isNeedToDecide: false })
-  // }
+  chooseMethod = key => {
+    this.setState({ choosedMethod: key, isNeedToDecide: false })
+  }
 
-  // setNeedDecide = value => {
-  //   this.setState({ isNeedToDecide: value })
-  // }
+  setNeedDecide = value => {
+    this.setState({ isNeedToDecide: value })
+  }
+
+  renderDecision = (key, commonProps) => {
+    switch (key) {
+      case decisionMethods.greedyAlgorithm:
+        return <GreedyAlgorithm {...commonProps} />
+      case decisionMethods.exhaustiveSearch:
+        return <ExhaustiveSearch {...commonProps} />
+      case decisionMethods.dynamicProgram:
+        return <DynamicProgram {...commonProps} />
+      case decisionMethods.brandAndBound:
+        return <BrandAndBoundMethod {...commonProps} />
+      default:
+        return null
+    }
+  }
 
   render() {
-    // const { dataSource, knapsackWeight, changeStatistic } = this.props
-    // const { isNeedToDecide, choosedMethod } = this.state
-    // console.log('chhos', choosedMethod)
-    // const commonProps = {
-    //   dataSource,
-    //   knapsackWeight,
-    //   changeStatistic,
-    //   setNeedDecide: this.setNeedDecide,
-    // }
+    const { dataSource, knapsackWeight, changeStatistic, currentDecisionMethod } = this.props
+    const { isNeedToDecide, isDisabledDecideButton } = this.state
+    console.log('currentDecisionMethod', currentDecisionMethod)
+    const commonProps = {
+      dataSource,
+      knapsackWeight,
+      changeStatistic,
+      setNeedDecide: this.setNeedDecide,
+    }
 
     return (
-      <StyledCard title='Результат'>
-        <CommonResultTable />
+      <StyledCard
+        title={
+          <DecisionHeader
+            isDisabledDecideButton={isDisabledDecideButton}
+            onClickDecideButton={this.onClickDecideButton}
+          />
+        }
+      >
+        {isNeedToDecide && this.renderDecision(currentDecisionMethod, commonProps)}
       </StyledCard>
     )
   }
@@ -87,12 +98,9 @@ const StyledCard = styled(Card)`
   }
 `
 
-// const StyledDecisionButton = styled(Button)`
-//   background-color: #9575cd;
-//   border-color: #9575cd;
-// `
-// DecisionMethodsTabs.propTypes = {
-//   dataSource: PropTypes.array,
-//   knapsackWeight: PropTypes.number,
-//   changeStatistic: PropTypes.func,
-// }
+DecisionMethodsTabs.propTypes = {
+  dataSource: PropTypes.array,
+  knapsackWeight: PropTypes.number,
+  currentDecisionMethod: PropTypes.string,
+  changeStatistic: PropTypes.func,
+}

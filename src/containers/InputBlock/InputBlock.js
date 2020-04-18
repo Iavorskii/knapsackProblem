@@ -66,14 +66,17 @@ export default class InputBlock extends Component {
   render() {
     const { isOpenRandomFillingModal, toggleRandomFillingModal, dataSource } = this.props
     return (
-      <StyledCard title='Начальные данные'>
-        <InputBlockHeader
-          handleAdd={this.handleAdd}
-          handleSave={this.handleSave}
-          setWeight={this.setWeight}
-          clearDatasource={this.clearDatasource}
-          toggleRandomFillingModal={toggleRandomFillingModal}
-        />
+      <StyledCard
+        title={
+          <InputBlockHeader
+            handleAdd={this.handleAdd}
+            handleSave={this.handleSave}
+            setWeight={this.setWeight}
+            clearDatasource={this.clearDatasource}
+            toggleRandomFillingModal={toggleRandomFillingModal}
+          />
+        }
+      >
         <InitialTable
           dataSource={dataSource}
           handleSave={this.handleSave}
@@ -97,5 +100,4 @@ InputBlock.propTypes = {
 
 const StyledCard = styled(Card)`
   grid-row-start: 2;
-  // width: 950px;
 `

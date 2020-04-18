@@ -1,8 +1,8 @@
 export const decisionMethods = {
-  brandAndBound: '1',
-  dynamicProgram: '2',
-  greedyAlgorithm: '3',
-  exhaustiveSearch: '4',
+  greedyAlgorithm: '1',
+  brandAndBound: '2',
+  exhaustiveSearch: '3',
+  dynamicProgram: '4',
 }
 
 export const courseTitle =

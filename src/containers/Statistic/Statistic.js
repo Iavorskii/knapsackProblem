@@ -38,7 +38,7 @@ const Statistic = props => {
           columns={columns}
           dataSource={statisticResults}
           bordered
-          pagination={{ pageSize: 6 }}
+          pagination={{ pageSize: 5 }}
         />
       </Card>
     </Wrapper>
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
   }
 `
 const StyledTable = styled(Table)`
-  margin-top: 15px;
+  margin-top: 10px;
   padding: 0 25px;
 
   .ant-table-thead > tr > th {

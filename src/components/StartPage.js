@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import InputBlock from '../containers/InputBlock'
-// import ChooseDecision from '../containers/DecisionBlock/ChooseDecision'
-import MainMenu from './MainMenu'
+import ChooseDecision from '../containers/DecisionBlock/ChooseDecision'
+import MainMenu from '../containers/MainMenu'
 import Statistic from '../containers/Statistic'
+import Graphics from '../containers/Statistic/Graphics'
 import { diplomaTitle } from '../constants'
 
 const StartPage = () => {
@@ -13,8 +14,9 @@ const StartPage = () => {
       <Wrapper>
         <Title>{diplomaTitle}</Title>
         <InputBlock />
-        {/* <ChooseDecision /> */}
+        <ChooseDecision />
         <Statistic />
+        <Graphics />
       </Wrapper>
     </CommonWrapper>
   )
@@ -31,7 +33,7 @@ const Wrapper = styled.div`
   grid-gap: 10px;
   padding: 10px;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 60px 450px;
+  grid-template-rows: 60px 410px;
 `
 
 const Title = styled.div`

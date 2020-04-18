@@ -43,6 +43,11 @@ const CommonResultTable = ({ resultDataSource }) => {
 }
 
 const StyledTable = styled(Table)`
+  padding: 0 25px;
+  margin-top: 10px;
+  .ant-card-bordered {
+    height: -webkit-fill-available;
+  }
   .ant-table-thead > tr > th {
     text-align: center;
     background-color: #64b5f6;

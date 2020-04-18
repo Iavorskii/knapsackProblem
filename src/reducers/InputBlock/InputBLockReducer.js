@@ -4,6 +4,7 @@ export const SET_COST_WEIGHT_ARRAY = 'inputBlock/SET_COST_WEIGHT_ARRAY'
 export const SET_KNAPSACK_WEIGHT = 'inputBlock/SET_KNAPSACK_WEIGHT'
 export const SET_RANDOM_PARAMS = 'inputBlock/SET_RANDOM_PARAMS'
 export const SET_NUMBER_OF_ITEMS = 'inputBlock/SET_NUMBER_OF_ITEMS'
+export const SET_CURRENT_DECISION_METHOD = 'inputBlock/SET_CURRENT_DECISION_METHOD'
 export const TOGGLE_RANDOM_FILLING_MODAL = 'inputBlock/TOGGLE_RANDOM_FILLING_MODAL'
 
 // time
@@ -15,6 +16,7 @@ export const toggleRandomFillingModal = createAction(TOGGLE_RANDOM_FILLING_MODAL
 export const setKnapsackWeight = createAction(SET_KNAPSACK_WEIGHT)
 export const changeStatistic = createAction(CHANGE_STATISTIC)
 export const setNumberOfItems = createAction(SET_NUMBER_OF_ITEMS)
+export const setCurrentDecisionMethod = createAction(SET_CURRENT_DECISION_METHOD)
 
 const initialState = {
   dataSource: [
@@ -30,6 +32,7 @@ const initialState = {
   knapsackWeight: null,
 
   statisticResults: [],
+  currentDecisionMethod: '1',
 }
 
 export default handleActions(
@@ -60,6 +63,10 @@ export default handleActions(
     [SET_NUMBER_OF_ITEMS]: (state, { payload: { numberOfItems } }) => ({
       ...state,
       numberOfItems,
+    }),
+    [SET_CURRENT_DECISION_METHOD]: (state, { payload: { currentDecisionMethod } }) => ({
+      ...state,
+      currentDecisionMethod,
     }),
   },
   initialState

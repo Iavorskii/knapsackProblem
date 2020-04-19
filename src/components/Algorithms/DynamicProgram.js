@@ -69,14 +69,13 @@ export default class DynamicProgrammingAlgorithm extends Component {
   render() {
     const { dataSource, knapsackWeight } = this.props
 
-    const start = new Date().getTime()
+    const start = performance.now()
     const result = this.dynamicAlgorithm(dataSource, knapsackWeight)
-    const end = new Date().getTime()
+    const end = performance.now()
 
     const decisionTime = end - start
     const { maxBenefit } = result
     this.refreshStatistic(decisionTime, maxBenefit)
-    console.log('dynamic')
     return <CommonResultTable resultDataSource={result.solutionArray} />
   }
 }

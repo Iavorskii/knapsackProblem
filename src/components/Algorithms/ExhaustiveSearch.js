@@ -46,9 +46,9 @@ export default class ExhaustiveSearch extends Component {
   render() {
     const { dataSource, knapsackWeight } = this.props
 
-    const start = new Date().getTime()
+    const start = performance.now()
     const result = this.implementation(dataSource, knapsackWeight)
-    const end = new Date().getTime()
+    const end = performance.now()
 
     const decisionTime = end - start
     const { maxBenefit } = result

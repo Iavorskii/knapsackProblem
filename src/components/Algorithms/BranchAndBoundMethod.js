@@ -37,10 +37,10 @@ export default class BranchAndBoundMethod extends Component {
   render() {
     const { dataSource, knapsackWeight } = this.props
 
-    // const start = new Date().getTime()
+    // const start = performance.now().now()
     const result = this.implementation(dataSource, knapsackWeight)
     console.log('result', result)
-    // const end = new Date().getTime()
+    // const end = performance.now().now()
     //
     // const decisionTime = end - start
     // const { maxBenefit } = result

@@ -14,17 +14,13 @@ export default class DecisionMethodsTabs extends Component {
   state = {
     isDisabledDecideButton: false,
     oldDataSource: [],
-  }
-
-  componentDidMount() {
-    const { setNeedDecide } = this.props
-    setNeedDecide({ isNeedToDecide: false })
+    countDecision: 0,
   }
 
   static getDerivedStateFromProps(props, state) {
     const { knapsackWeight, dataSource, setNeedDecide } = props
     if (!isEqual(dataSource, state.oldDataSource)) {
-      // setNeedDecide({ isNeedToDecide: false })
+      setNeedDecide({ isNeedToDecide: false })
       return {
         isDisabledDecideButton: isNil(knapsackWeight),
         oldDataSource: dataSource,
@@ -37,7 +33,10 @@ export default class DecisionMethodsTabs extends Component {
 
   onClickDecideButton = () => {
     const { setNeedDecide } = this.props
+    const { countDecision } = this.state
     setNeedDecide({ isNeedToDecide: true })
+    const oldCountDecision = countDecision
+    this.setState({ countDecision: oldCountDecision + 1 })
   }
 
   renderDecision = (key, commonProps) => {
@@ -65,7 +64,6 @@ export default class DecisionMethodsTabs extends Component {
       setCurrentDecisionMethod,
     } = this.props
     const { isDisabledDecideButton } = this.state
-    console.log('currentDecisionMethod', currentDecisionMethod)
     const commonProps = {
       dataSource,
       knapsackWeight,

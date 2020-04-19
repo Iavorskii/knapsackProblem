@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Row, Col, InputNumber, Form } from 'antd'
 
-const RandomAdding = ({ form: { getFieldDecorator, validateFields, setFieldsValue }, form }) => {
+const RandomAdding = ({ form: { getFieldDecorator, validateFields, setFieldsValue } }) => {
   RandomAdding.propTypes = {
     form: PropTypes.object,
   }
   useEffect(() => {
     validateFields({ force: true })
     setFieldsValue({
+      knapsackWeight: 10,
       thingsCount: 5,
       minWeight: 1,
       maxWeight: 10,
@@ -17,7 +18,7 @@ const RandomAdding = ({ form: { getFieldDecorator, validateFields, setFieldsValu
       maxCost: 10,
     })
   }, [])
-  console.log('form', form.getFieldsValue())
+
   return (
     <div>
       <StyledRow>

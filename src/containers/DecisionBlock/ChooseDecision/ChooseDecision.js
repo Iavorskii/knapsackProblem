@@ -13,16 +13,20 @@ import { decisionMethods } from '../../../constants/index'
 export default class DecisionMethodsTabs extends Component {
   state = {
     isDisabledDecideButton: false,
-    isNeedToDecide: false,
     oldDataSource: [],
   }
 
+  componentDidMount() {
+    const { setNeedDecide } = this.props
+    setNeedDecide({ isNeedToDecide: false })
+  }
+
   static getDerivedStateFromProps(props, state) {
-    const { knapsackWeight, dataSource } = props
+    const { knapsackWeight, dataSource, setNeedDecide } = props
     if (!isEqual(dataSource, state.oldDataSource)) {
+      // setNeedDecide({ isNeedToDecide: false })
       return {
         isDisabledDecideButton: isNil(knapsackWeight),
-        isNeedToDecide: false,
         oldDataSource: dataSource,
       }
     }
@@ -32,15 +36,8 @@ export default class DecisionMethodsTabs extends Component {
   }
 
   onClickDecideButton = () => {
-    this.setState({ isNeedToDecide: true })
-  }
-
-  chooseMethod = key => {
-    this.setState({ choosedMethod: key, isNeedToDecide: false })
-  }
-
-  setNeedDecide = value => {
-    this.setState({ isNeedToDecide: value })
+    const { setNeedDecide } = this.props
+    setNeedDecide({ isNeedToDecide: true })
   }
 
   renderDecision = (key, commonProps) => {
@@ -59,14 +56,21 @@ export default class DecisionMethodsTabs extends Component {
   }
 
   render() {
-    const { dataSource, knapsackWeight, changeStatistic, currentDecisionMethod } = this.props
-    const { isNeedToDecide, isDisabledDecideButton } = this.state
+    const {
+      dataSource,
+      knapsackWeight,
+      changeStatistic,
+      currentDecisionMethod,
+      isNeedToDecide,
+      setCurrentDecisionMethod,
+    } = this.props
+    const { isDisabledDecideButton } = this.state
     console.log('currentDecisionMethod', currentDecisionMethod)
     const commonProps = {
       dataSource,
       knapsackWeight,
       changeStatistic,
-      setNeedDecide: this.setNeedDecide,
+      setCurrentDecisionMethod,
     }
 
     return (
@@ -103,4 +107,7 @@ DecisionMethodsTabs.propTypes = {
   knapsackWeight: PropTypes.number,
   currentDecisionMethod: PropTypes.string,
   changeStatistic: PropTypes.func,
+  setNeedDecide: PropTypes.func,
+  setCurrentDecisionMethod: PropTypes.func,
+  isNeedToDecide: PropTypes.bool,
 }

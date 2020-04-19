@@ -3,6 +3,7 @@ import { handleActions, createAction } from 'redux-actions'
 export const SET_COST_WEIGHT_ARRAY = 'inputBlock/SET_COST_WEIGHT_ARRAY'
 export const SET_KNAPSACK_WEIGHT = 'inputBlock/SET_KNAPSACK_WEIGHT'
 export const SET_RANDOM_PARAMS = 'inputBlock/SET_RANDOM_PARAMS'
+export const SET_NEED_DECIDE = 'inputBlock/SET_NEED_DECIDE'
 export const SET_NUMBER_OF_ITEMS = 'inputBlock/SET_NUMBER_OF_ITEMS'
 export const SET_CURRENT_DECISION_METHOD = 'inputBlock/SET_CURRENT_DECISION_METHOD'
 export const TOGGLE_RANDOM_FILLING_MODAL = 'inputBlock/TOGGLE_RANDOM_FILLING_MODAL'
@@ -17,15 +18,17 @@ export const setKnapsackWeight = createAction(SET_KNAPSACK_WEIGHT)
 export const changeStatistic = createAction(CHANGE_STATISTIC)
 export const setNumberOfItems = createAction(SET_NUMBER_OF_ITEMS)
 export const setCurrentDecisionMethod = createAction(SET_CURRENT_DECISION_METHOD)
+export const setNeedDecide = createAction(SET_NEED_DECIDE)
 
 const initialState = {
-  dataSource: [
-    { key: 0, Name: 'Предмет 0', Cost: 7, Weight: 4 },
-    { key: 1, Name: 'Предмет 1', Cost: 5, Weight: 8 },
-    { key: 2, Name: 'Предмет 2', Cost: 5, Weight: 3 },
-    { key: 3, Name: 'Предмет 3', Cost: 7, Weight: 9 },
-    { key: 4, Name: 'Предмет 4', Cost: 7, Weight: 4 },
-  ],
+  // dataSource: [
+  //   { key: 0, Name: 'Предмет 0', Cost: 7, Weight: 4 },
+  //   { key: 1, Name: 'Предмет 1', Cost: 5, Weight: 8 },
+  //   { key: 2, Name: 'Предмет 2', Cost: 5, Weight: 3 },
+  //   { key: 3, Name: 'Предмет 3', Cost: 7, Weight: 9 },
+  //   { key: 4, Name: 'Предмет 4', Cost: 7, Weight: 4 },
+  // ],
+  dataSource: [],
   randomParams: [],
   numberOfItems: 0,
   isOpenAddingModal: false,
@@ -33,6 +36,7 @@ const initialState = {
 
   statisticResults: [],
   currentDecisionMethod: '1',
+  isNeedToDecide: false,
 }
 
 export default handleActions(
@@ -67,6 +71,10 @@ export default handleActions(
     [SET_CURRENT_DECISION_METHOD]: (state, { payload: { currentDecisionMethod } }) => ({
       ...state,
       currentDecisionMethod,
+    }),
+    [SET_NEED_DECIDE]: (state, { payload: { isNeedToDecide } }) => ({
+      ...state,
+      isNeedToDecide,
     }),
   },
   initialState

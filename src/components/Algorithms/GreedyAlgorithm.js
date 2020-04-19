@@ -41,7 +41,6 @@ export default class GreedyMethod extends Component {
 
     const start = new Date().getTime()
     const result = this.implementation(dataSource, knapsackWeight)
-    console.log('result', result)
     const end = new Date().getTime()
 
     const decisionTime = end - start

@@ -40,11 +40,11 @@ class AddingModal extends PureComponent {
       }
       temporaryCostWeightArray.push(tempObject)
     }
+    toggleAddingModal()
     setCostWeightArray({ dataSource: [...dataSource, ...temporaryCostWeightArray] })
     const modyfiedNumberOfItems = numberOfItems + thingsCount
     setNumberOfItems({ numberOfItems: modyfiedNumberOfItems })
     setKnapsackWeight({ knapsackWeight })
-    toggleAddingModal()
     notification.success({
       message: 'Предметы  успешно сгенерированы и добавлены в таблицу',
       duration: 3,
@@ -68,15 +68,8 @@ class AddingModal extends PureComponent {
   }
 
   render() {
-    const {
-      isOpenAddingModal,
-      toggleAddingModal,
-      form,
-      // knapsackWeight,
-    } = this.props
-
-    console.log('form.', form.getFieldsValue())
-
+    const { isOpenAddingModal, toggleAddingModal, form } = this.props
+    console.log('render')
     return (
       <StyledModal
         width={800}
@@ -111,7 +104,6 @@ AddingModal.propTypes = {
   setKnapsackWeight: PropTypes.func,
   dataSource: PropTypes.arrayOf(),
   form: PropTypes.object,
-  knapsackWeight: PropTypes.number,
   numberOfItems: PropTypes.number,
 }
 
@@ -120,5 +112,8 @@ const StyledModal = styled(Modal)`
     height: 32px;
     background-color: #64b5f6;
     border-color: #64b5f6;
+  }
+  .ant-col ant-col-8 {
+    padding-top: 10px;
   }
 `

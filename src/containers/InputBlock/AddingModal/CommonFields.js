@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Row, Col, InputNumber, Form } from 'antd'
 
-const CommonFields = ({ form: { getFieldDecorator }, form }) => {
+const CommonFields = ({ form: { getFieldDecorator } }) => {
   CommonFields.propTypes = {
     form: PropTypes.object,
   }
-  console.log('form1', form.getFieldsValue())
+
   return (
     <StyledRow>
       <Col span={8}>Вес рюкзака</Col>

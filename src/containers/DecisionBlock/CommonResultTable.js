@@ -37,7 +37,7 @@ const CommonResultTable = ({ resultDataSource }) => {
       dataSource={resultDataSource}
       columns={columns}
       bordered
-      pagination={{ pageSize: 7 }}
+      pagination={{ pageSize: 5 }}
     />
   )
 }

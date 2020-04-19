@@ -4,10 +4,16 @@ import styled from 'styled-components'
 import { Menu } from 'antd'
 import { menuItems } from '../../constants'
 
-const MainMenu = ({ currentDecisionMethod, setCurrentDecisionMethod }) => {
+const MainMenu = ({ currentDecisionMethod, setCurrentDecisionMethod, setNeedDecide }) => {
   MainMenu.propTypes = {
     currentDecisionMethod: PropTypes.string,
     setCurrentDecisionMethod: PropTypes.func,
+    setNeedDecide: PropTypes.func,
+  }
+
+  const onSelectMenuItem = item => {
+    setNeedDecide({ isNeedDecide: false })
+    setCurrentDecisionMethod({ currentDecisionMethod: item.key })
   }
 
   return (
@@ -16,7 +22,7 @@ const MainMenu = ({ currentDecisionMethod, setCurrentDecisionMethod }) => {
         mode='inline'
         theme='dark'
         defaultSelectedKeys={[currentDecisionMethod]}
-        onSelect={item => setCurrentDecisionMethod({ currentDecisionMethod: item.key })}
+        onSelect={item => onSelectMenuItem(item)}
       >
         {menuItems.map((item, index) => (
           <StyledMenuItem key={item.key} isFirstItem={index === 0}>

@@ -2,7 +2,10 @@ import { connect } from 'react-redux'
 
 import MainMenu from './MainMenu'
 
-import { setCurrentDecisionMethod } from '../../reducers/InputBlock/InputBLockReducer'
+import {
+  setCurrentDecisionMethod,
+  setNeedDecide,
+} from '../../reducers/InputBlock/InputBLockReducer'
 
 const mapStateToProps = state => ({
   currentDecisionMethod: state.inputBlock.currentDecisionMethod,
@@ -10,6 +13,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   setCurrentDecisionMethod,
+  setNeedDecide,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainMenu)

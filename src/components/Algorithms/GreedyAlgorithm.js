@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+// import { notification } from 'antd'
 import CommonResultTable from '../../containers/DecisionBlock/CommonResultTable'
 
 export default class GreedyMethod extends Component {
@@ -38,7 +39,10 @@ export default class GreedyMethod extends Component {
 
   render() {
     const { dataSource, knapsackWeight } = this.props
-
+    // notification.info({
+    //   message: 'Таймер',
+    //   duration:
+    // })
     const start = performance.now()
     const result = this.implementation(dataSource, knapsackWeight)
     const end = performance.now()

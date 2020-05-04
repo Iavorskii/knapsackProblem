@@ -35,7 +35,7 @@ const initialState = {
   knapsackWeight: null,
 
   statisticResults: [],
-  currentDecisionMethod: '1',
+  currentDecisionMethod: '2',
   isNeedToDecide: false,
 }
 

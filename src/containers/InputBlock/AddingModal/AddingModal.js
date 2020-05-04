@@ -7,11 +7,52 @@ import ManualAdding from './ManualAdding'
 import CommonFields from './CommonFields'
 
 const { TabPane } = Tabs
+
+const testArray = [
+  { key: 0, Name: 'vegetables', Weight: 12, Cost: 4 },
+  {
+    key: 1,
+    Name: 'candy',
+    Weight: 1,
+    Cost: 1,
+  },
+  {
+    key: 2,
+    Name: 'magazines',
+    Weight: 4,
+    Cost: 2,
+  },
+  {
+    key: 3,
+    Name: 'dvd',
+    Weight: 6,
+    Cost: 2,
+  },
+  {
+    key: 4,
+    Name: 'earphones',
+    Weight: 6,
+    Cost: 3,
+  },
+  {
+    key: 5,
+    Name: 'shoes',
+    Weight: 4,
+    Cost: 2,
+  },
+  {
+    key: 6,
+    Name: 'supplies',
+    Weight: 9,
+    Cost: 3,
+  },
+]
+
 // по-хорошему, необходимо создать правильно поля и провести рефактор, вынести валидацию наверх
 class AddingModal extends PureComponent {
-  state = {
-    temporaryCostWeightArray: [],
-  }
+  // state = {
+  //   temporaryCostWeightArray: [],
+  // }
 
   hasErrors = fieldsError => Object.keys(fieldsError).some(field => fieldsError[field])
 
@@ -27,21 +68,22 @@ class AddingModal extends PureComponent {
       numberOfItems,
       setKnapsackWeight,
     } = this.props
-    const { thingsCount, minWeight, maxWeight, minCost, maxCost, knapsackWeight } = getFieldsValue()
+    const { thingsCount, knapsackWeight } = getFieldsValue()
 
-    const { temporaryCostWeightArray } = this.state
+    // const { temporaryCostWeightArray } = this.state
+    // minWeight, maxWeight, minCost, maxCost
     // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < thingsCount; i++) {
-      const tempObject = {
-        key: numberOfItems + i,
-        Name: `Предмет ${i.toString()}`,
-        Cost: this.randomInteger(+minCost, +maxCost),
-        Weight: this.randomInteger(+minWeight, +maxWeight),
-      }
-      temporaryCostWeightArray.push(tempObject)
-    }
+    // for (let i = 0; i < thingsCount; i++) {
+    //   const tempObject = {
+    //     key: numberOfItems + i,
+    //     Name: `Предмет ${i.toString()}`,
+    //     Cost: this.randomInteger(+minCost, +maxCost),
+    //     Weight: this.randomInteger(+minWeight, +maxWeight),
+    //   }
+    //   temporaryCostWeightArray.push(tempObject)
+    // }
     toggleAddingModal()
-    setCostWeightArray({ dataSource: [...dataSource, ...temporaryCostWeightArray] })
+    setCostWeightArray({ dataSource: [...dataSource, ...testArray] })
     const modyfiedNumberOfItems = numberOfItems + thingsCount
     setNumberOfItems({ numberOfItems: modyfiedNumberOfItems })
     setKnapsackWeight({ knapsackWeight })
@@ -58,13 +100,11 @@ class AddingModal extends PureComponent {
 
     const disabledButtonPrimary = this.hasErrors(getFieldsError())
 
-    return [
-      <div>
-        <Button type='primary' disabled={disabledButtonPrimary} onClick={this.handleOk}>
-          Сохранить
-        </Button>
-      </div>,
-    ]
+    return (
+      <Button type='primary' disabled={disabledButtonPrimary} onClick={this.handleOk}>
+        Сохранить
+      </Button>
+    )
   }
 
   render() {

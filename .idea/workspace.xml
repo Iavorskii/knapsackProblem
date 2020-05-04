@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00983a7c-b2ad-40ac-bbfa-fe9e8ce9df3e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/MainMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StartPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StartPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Algorithms/BranchAndBoundMethod.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/BranchAndBoundMethod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Algorithms/GreedyAlgorithm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Algorithms/GreedyAlgorithm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/DecisionBlock/ChooseDecision/ChooseDecision.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DecisionBlock/ChooseDecision/ChooseDecision.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +31,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedeslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/java knapsack" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -65,6 +65,7 @@
       <workItem from="1586603475463" duration="91000" />
       <workItem from="1586603607065" duration="1677000" />
       <workItem from="1586605305502" duration="9578000" />
+      <workItem from="1587298225284" duration="20000" />
     </task>
     <servers />
   </component>
@@ -92,10 +93,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="585" y="2" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586609632965" />
-    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1586202486033">
+    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1587298243126">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586202486033" />
+    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587298243126" />
     <state x="408" y="178" width="1138" height="738" key="SettingsEditor" timestamp="1586607196424">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

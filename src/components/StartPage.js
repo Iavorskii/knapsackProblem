@@ -4,7 +4,7 @@ import InputBlock from '../containers/InputBlock'
 import ChooseDecision from '../containers/DecisionBlock/ChooseDecision'
 import MainMenu from '../containers/MainMenu'
 import Statistic from '../containers/Statistic'
-import Graphics from '../containers/Statistic/Graphics'
+// import Graphics from '../containers/Statistic/Graphics'
 import { diplomaTitle } from '../constants'
 
 const StartPage = () => {
@@ -16,7 +16,7 @@ const StartPage = () => {
         <InputBlock />
         <ChooseDecision />
         <Statistic />
-        <Graphics />
+        {/* <Graphics /> */}
       </Wrapper>
     </CommonWrapper>
   )

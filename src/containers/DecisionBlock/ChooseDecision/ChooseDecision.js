@@ -14,7 +14,7 @@ export default class DecisionMethodsTabs extends Component {
   state = {
     isDisabledDecideButton: false,
     oldDataSource: [],
-    countDecision: 0,
+    countDecision: 0, // необходимо для повторного рендера при многократных решениях одним и тем же методом
   }
 
   static getDerivedStateFromProps(props, state) {

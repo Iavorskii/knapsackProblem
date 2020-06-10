@@ -3,6 +3,7 @@ export const decisionMethods = {
   brandAndBound: '2',
   exhaustiveSearch: '3',
   dynamicProgram: '4',
+  geneticAlgorithm: '5',
 }
 
 export const courseTitle =
@@ -29,6 +30,11 @@ export const menuItems = [
   {
     title: 'Метод дин. программирования',
     key: decisionMethods.dynamicProgram,
+    icon: '',
+  },
+  {
+    title: 'Генетический алгоритм',
+    key: decisionMethods.geneticAlgorithm,
     icon: '',
   },
 ]

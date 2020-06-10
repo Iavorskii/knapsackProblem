@@ -1,4 +1,6 @@
 /* eslint-disable eqeqeq */
+const _ = require('lodash')
+
 const finalResult = {
   weight: 0,
   optimalValue: 0,
@@ -53,12 +55,14 @@ const dfs = (tempArr, index, weights, values, limitWeight) => {
   dfs(tempArr.concat(1), index + 1, weights, values, limitWeight)
 }
 
-const branchAndBound = data => {
-  for (let i = data.values.length - 1; i >= 0; i--) {
-    bounds = [data.values[i] + (bounds[0] || 0)].concat(bounds)
+const branchAndBound = (dataSource, knapsackWeight) => {
+  const values = _.map(dataSource, 'Cost')
+  const weights = _.map(dataSource, 'Weight')
+  for (let i = values.length - 1; i >= 0; i--) {
+    bounds = [values[i] + (bounds[0] || 0)].concat(bounds)
   }
 
-  dfs([], 0, data.weights, data.values, data.limitWeight)
+  dfs([], 0, weights, values, knapsackWeight)
   finalResult.countNode = countNode
   return finalResult
 }

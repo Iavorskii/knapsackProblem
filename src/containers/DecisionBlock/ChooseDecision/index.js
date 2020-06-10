@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
   dataSource: state.inputBlock.dataSource,
   currentDecisionMethod: state.inputBlock.currentDecisionMethod,
   isNeedToDecide: state.inputBlock.isNeedToDecide,
+  geneticAlgorithmParams: state.inputBlock.geneticAlgorithmParams,
 })
 
 const mapDispatchToProps = {

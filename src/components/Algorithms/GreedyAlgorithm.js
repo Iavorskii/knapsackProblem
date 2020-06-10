@@ -39,10 +39,7 @@ export default class GreedyMethod extends Component {
 
   render() {
     const { dataSource, knapsackWeight } = this.props
-    // notification.info({
-    //   message: 'Таймер',
-    //   duration:
-    // })
+
     const start = performance.now()
     const result = this.implementation(dataSource, knapsackWeight)
     const end = performance.now()

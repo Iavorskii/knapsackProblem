@@ -7,6 +7,7 @@ import BrandAndBoundMethod from '../../../components/Algorithms/BranchAndBoundMe
 import DynamicProgram from '../../../components/Algorithms/DynamicProgram'
 import GreedyAlgorithm from '../../../components/Algorithms/GreedyAlgorithm'
 import ExhaustiveSearch from '../../../components/Algorithms/ExhaustiveSearch'
+import GeneticAlgorithm from '../../../components/Algorithms/GeneticAlgorithm/GeneticAlgorithm'
 import DecisionHeader from './DecisionHeader'
 import { decisionMethods } from '../../../constants/index'
 
@@ -40,17 +41,24 @@ export default class DecisionMethodsTabs extends Component {
   }
 
   renderDecision = (key, commonProps) => {
-    switch (key) {
-      case decisionMethods.greedyAlgorithm:
-        return <GreedyAlgorithm {...commonProps} />
-      case decisionMethods.exhaustiveSearch:
-        return <ExhaustiveSearch {...commonProps} />
-      case decisionMethods.dynamicProgram:
-        return <DynamicProgram {...commonProps} />
-      case decisionMethods.brandAndBound:
-        return <BrandAndBoundMethod {...commonProps} />
-      default:
-        return null
+    const { geneticAlgorithmParams, dataSource } = this.props
+    if (dataSource.length !== 0) {
+      switch (key) {
+        case decisionMethods.greedyAlgorithm:
+          return <GreedyAlgorithm {...commonProps} />
+        case decisionMethods.exhaustiveSearch:
+          return <ExhaustiveSearch {...commonProps} />
+        case decisionMethods.dynamicProgram:
+          return <DynamicProgram {...commonProps} />
+        case decisionMethods.brandAndBound:
+          return <BrandAndBoundMethod {...commonProps} />
+        case decisionMethods.geneticAlgorithm:
+          return (
+            <GeneticAlgorithm {...commonProps} geneticAlgorithmParams={geneticAlgorithmParams} />
+          )
+        default:
+          return null
+      }
     }
   }
 
@@ -70,7 +78,6 @@ export default class DecisionMethodsTabs extends Component {
       changeStatistic,
       setCurrentDecisionMethod,
     }
-
     return (
       <StyledCard
         title={
@@ -108,4 +115,5 @@ DecisionMethodsTabs.propTypes = {
   setNeedDecide: PropTypes.func,
   setCurrentDecisionMethod: PropTypes.func,
   isNeedToDecide: PropTypes.bool,
+  geneticAlgorithmParams: PropTypes.object,
 }

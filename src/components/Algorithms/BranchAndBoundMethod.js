@@ -3,13 +3,72 @@ import PropTypes from 'prop-types'
 import CommonResultTable from '../../containers/DecisionBlock/CommonResultTable'
 
 const _ = require('lodash')
-const BnB = require('./BranchAndBound')
+
+const finalResult = {
+  weight: 0,
+  optimalValue: 0,
+  solution: [],
+}
+let countNode = 0
+let bounds = []
 
 export default class BranchAndBoundMethod extends Component {
-  // constructor() {
-  //   super()
-  //   const sortedList = orderBy()
-  // }
+  validateBound = (tempArr, values, finalResult1, bounds1) => {
+    // calculate sum value
+    let sumValue = 0
+    for (let i = 0; i < tempArr.length; i++) {
+      if (tempArr[i] === 1) {
+        sumValue += values[i]
+      }
+    }
+
+    if (finalResult1.optimalValue > sumValue + bounds1[tempArr.length - 1]) return false
+    return true
+  }
+
+  dfs = (tempArr, index, weights, values, limitWeight) => {
+    countNode++
+    // reach the end of state-space search tree
+    if (index === weights.length) {
+      let sumWeight = 0
+      let sumValue = 0
+
+      for (let i = 0; i < tempArr.length; i++) {
+        if (tempArr[i] === 1) {
+          sumWeight += weights[i]
+          sumValue += values[i]
+        }
+      }
+
+      // update optimal solution if found
+      if (sumWeight <= limitWeight && sumValue > finalResult.optimalValue) {
+        finalResult.weight = sumWeight
+        finalResult.optimalValue = sumValue
+        finalResult.solution = tempArr
+      }
+
+      return
+    }
+
+    if (!this.validateBound(tempArr, values, finalResult, bounds)) {
+      return
+    }
+
+    this.dfs(tempArr.concat(0), index + 1, weights, values, limitWeight)
+    this.dfs(tempArr.concat(1), index + 1, weights, values, limitWeight)
+  }
+
+  branchAndBound = (dataSource, knapsackWeight) => {
+    const values = _.map(dataSource, 'Cost')
+    const weights = _.map(dataSource, 'Weight')
+    for (let i = values.length - 1; i >= 0; i--) {
+      bounds = [values[i] + (bounds[0] || 0)].concat(bounds)
+    }
+
+    this.dfs([], 0, weights, values, knapsackWeight)
+    finalResult.countNode = countNode
+    return finalResult
+  }
 
   refreshStatistic = (decisionTime, maxBenefit) => {
     const { changeStatistic } = this.props
@@ -24,73 +83,28 @@ export default class BranchAndBoundMethod extends Component {
   }
 
   render() {
-    // const { dataSource, knapsackvalue } = this.props
-    const list = [
-      {
-        name: 'vegetables',
-        value: 12,
-        cost: 4,
-      },
-      {
-        name: 'candy',
-        value: 1,
-        cost: 1,
-      },
-      {
-        name: 'magazines',
-        value: 4,
-        cost: 2,
-      },
-      {
-        name: 'dvd',
-        value: 6,
-        cost: 2,
-      },
-      {
-        name: 'earphones',
-        value: 6,
-        cost: 3,
-      },
-      {
-        name: 'shoes',
-        value: 4,
-        cost: 2,
-      },
-      {
-        name: 'supplies',
-        value: 9,
-        cost: 3,
-      },
-    ]
-    const start = performance.now()
-    const data = {}
-    data.values = _.map(list, 'cost')
-    data.weights = _.map(list, 'value')
-    data.limitWeight = 10
-    const result1 = BnB(data)
-    console.log('result111', result1)
-    const end = performance.now()
+    const { dataSource, knapsackWeight } = this.props
 
+    const start = performance.now()
+    const result = this.branchAndBound(dataSource, knapsackWeight)
+    const end = performance.now()
     const decisionTime = end - start
-    console.log('decisionTime', decisionTime)
-    // const { maxBenefit } = result
-    // this.refreshStatistic(decisionTime, maxBenefit)
+    const { optimalValue } = result
+    this.refreshStatistic(decisionTime, optimalValue)
     const indexes = []
-    for (let i = 0; i < result1.solution.length; i++) {
-      if (result1.solution[i] === 1) {
+    for (let i = 0; i < result.solution.length; i++) {
+      if (result.solution[i] === 1) {
         indexes.push(i)
       }
     }
-    console.log('indexes', indexes)
-
-    const decision = _.pullAt(list, indexes)
+    const decision = _.pullAt(_.cloneDeep(dataSource), indexes)
     console.log('decision', decision)
-    return <CommonResultTable resultDataSource={result1.items} />
+    return <CommonResultTable resultDataSource={decision} />
   }
 }
 
 BranchAndBoundMethod.propTypes = {
   dataSource: PropTypes.array,
-  knapsackvalue: PropTypes.number,
+  knapsackWeight: PropTypes.number,
   changeStatistic: PropTypes.func,
 }

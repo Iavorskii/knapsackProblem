@@ -5,6 +5,7 @@ import { notification, Card } from 'antd'
 import InputBlockHeader from './InputBlockHeader'
 import InitialTable from './InitialTable/InitialTable'
 import AddingModal from './AddingModal'
+import GeneticModal from './GeneticModal'
 
 export default class InputBlock extends Component {
   handleAdd = () => {
@@ -64,7 +65,14 @@ export default class InputBlock extends Component {
   }
 
   render() {
-    const { isOpenAddingModal, toggleAddingModal, dataSource } = this.props
+    const {
+      isOpenAddingModal,
+      isGeneticModalOpened,
+      toggleAddingModal,
+      toggleGeneticModal,
+      dataSource,
+    } = this.props
+
     return (
       <StyledCard
         title={
@@ -74,6 +82,7 @@ export default class InputBlock extends Component {
             setWeight={this.setWeight}
             clearDatasource={this.clearDatasource}
             toggleAddingModal={toggleAddingModal}
+            toggleGeneticModal={toggleGeneticModal}
           />
         }
       >
@@ -83,6 +92,7 @@ export default class InputBlock extends Component {
           handleDelete={this.handleDelete}
         />
         {isOpenAddingModal && <AddingModal />}
+        {<GeneticModal />}
       </StyledCard>
     )
   }
@@ -91,6 +101,8 @@ export default class InputBlock extends Component {
 InputBlock.propTypes = {
   isOpenAddingModal: PropTypes.bool,
   toggleAddingModal: PropTypes.func,
+  isGeneticModalOpened: PropTypes.bool,
+  toggleGeneticModal: PropTypes.func,
   setCostWeightArray: PropTypes.func,
   setKnapsackWeight: PropTypes.func,
   setNumberOfItems: PropTypes.func,

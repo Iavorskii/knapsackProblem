@@ -8,15 +8,15 @@ const RandomAdding = ({ form: { getFieldDecorator, validateFields, setFieldsValu
     form: PropTypes.object,
   }
   useEffect(() => {
-    validateFields({ force: true })
-    setFieldsValue({
-      knapsackWeight: 10,
-      thingsCount: 5,
-      minWeight: 1,
-      maxWeight: 10,
-      minCost: 1,
-      maxCost: 10,
-    })
+    validateFields({ force: false })
+    // setFieldsValue({
+    //   knapsackWeight: 10,
+    //   thingsCount: 5,
+    //   minWeight: 1,
+    //   maxWeight: 10,
+    //   minCost: 1,
+    //   maxCost: 10,
+    // })
   }, [])
 
   return (
@@ -28,7 +28,7 @@ const RandomAdding = ({ form: { getFieldDecorator, validateFields, setFieldsValu
             {getFieldDecorator('thingsCount', {
               rules: [
                 {
-                  required: true,
+                  required: false,
                   message: `Поле обязательно для заполнения`,
                 },
               ],
@@ -49,7 +49,7 @@ const RandomAdding = ({ form: { getFieldDecorator, validateFields, setFieldsValu
             {getFieldDecorator('minWeight', {
               rules: [
                 {
-                  required: true,
+                  required: false,
                   message: `Поле обязательно для заполнения`,
                 },
               ],
@@ -64,7 +64,7 @@ const RandomAdding = ({ form: { getFieldDecorator, validateFields, setFieldsValu
             {getFieldDecorator('maxWeight', {
               rules: [
                 {
-                  required: true,
+                  required: false,
                   message: `Поле обязательно для заполнения`,
                 },
                 // {
@@ -83,7 +83,7 @@ const RandomAdding = ({ form: { getFieldDecorator, validateFields, setFieldsValu
             {getFieldDecorator('minCost', {
               rules: [
                 {
-                  required: true,
+                  required: false,
                   message: `Поле обязательно для заполнения`,
                 },
               ],
@@ -98,7 +98,7 @@ const RandomAdding = ({ form: { getFieldDecorator, validateFields, setFieldsValu
             {getFieldDecorator('maxCost', {
               rules: [
                 {
-                  required: true,
+                  required: false,
                   message: `Поле обязательно для заполнения`,
                 },
               ],

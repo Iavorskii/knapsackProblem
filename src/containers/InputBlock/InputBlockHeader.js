@@ -4,13 +4,16 @@ import styled from 'styled-components'
 import { Row, Col, Tooltip, Icon } from 'antd'
 
 const InputBlockHeader = props => {
-  const { toggleAddingModal, clearDatasource } = props
+  const { toggleAddingModal, toggleGeneticModal, clearDatasource } = props
 
   return (
     <Wrapper>
       <Row type='flex' justify='space-between'>
-        <Col span={5}>Начальные данные</Col>
-        <StyleIconsCol span={2}>
+        <Col span={6}>Начальные данные</Col>
+        <StyleIconsCol span={4}>
+          <Tooltip title='Параметры генетического алгоритма'>
+            <StyleIcon type='deployment-unit' onClick={() => toggleGeneticModal()} />
+          </Tooltip>
           <Tooltip title='Заполнение рандомными предметами'>
             <StyleIcon type='form' onClick={() => toggleAddingModal()} />
           </Tooltip>
@@ -43,12 +46,11 @@ const StyleIcon = styled(Icon)`
 const StyleIconsCol = styled(Col)`
   display: flex;
   justify-contet: space-between;
-  // border: 1px solid;
   padding-top: 5px;
 `
 
 InputBlockHeader.propTypes = {
-  handleAdd: PropTypes.bool,
+  toggleGeneticModal: PropTypes.func,
   toggleAddingModal: PropTypes.func,
   clearDatasource: PropTypes.func,
 }
